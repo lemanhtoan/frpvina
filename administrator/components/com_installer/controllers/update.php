@@ -43,6 +43,11 @@ class InstallerControllerUpdate extends JControllerLegacy
 
 		$model->update($uid, $minimum_stability);
 
+		if ($model->getState('result', false))
+		{
+			JFactory::getCache('mod_menu')->clean();
+		}
+
 		$app          = JFactory::getApplication();
 		$redirect_url = $app->getUserState('com_installer.redirect_url');
 

@@ -119,16 +119,10 @@ class PlgSystemRedirect extends JPlugin
 
 		$uri = JUri::getInstance();
 
-		// These are the original URLs
-		$orgurl                = rawurldecode($uri->toString(array('scheme', 'host', 'port', 'path', 'query', 'fragment')));
-		$orgurlRel             = rawurldecode($uri->toString(array('path', 'query', 'fragment')));
-		$orgurlWithoutQuery    = rawurldecode($uri->toString(array('scheme', 'host', 'port', 'path', 'fragment')));
-		$orgurlRelWithoutQuery = rawurldecode($uri->toString(array('path', 'fragment')));
+		$url = StringHelper::strtolower(rawurldecode($uri->toString(array('scheme', 'host', 'port', 'path', 'query', 'fragment'))));
+		$urlRel = StringHelper::strtolower(rawurldecode($uri->toString(array('path', 'query', 'fragment'))));
 
-		// These are the URLs we save and use
-		$url                = StringHelper::strtolower(rawurldecode($uri->toString(array('scheme', 'host', 'port', 'path', 'query', 'fragment'))));
-		$urlRel             = StringHelper::strtolower(rawurldecode($uri->toString(array('path', 'query', 'fragment'))));
-		$urlWithoutQuery    = StringHelper::strtolower(rawurldecode($uri->toString(array('scheme', 'host', 'port', 'path', 'fragment'))));
+		$urlWithoutQuery = StringHelper::strtolower(rawurldecode($uri->toString(array('scheme', 'host', 'port', 'path', 'fragment'))));
 		$urlRelWithoutQuery = StringHelper::strtolower(rawurldecode($uri->toString(array('path', 'fragment'))));
 
 		// Why is this (still) here?
@@ -152,14 +146,6 @@ class PlgSystemRedirect extends JPlugin
 				. $db->quoteName('old_url') . ' = ' . $db->quote($urlWithoutQuery)
 				. ' OR '
 				. $db->quoteName('old_url') . ' = ' . $db->quote($urlRelWithoutQuery)
-				. ' OR '
-				. $db->quoteName('old_url') . ' = ' . $db->quote($orgurl)
-				. ' OR '
-				. $db->quoteName('old_url') . ' = ' . $db->quote($orgurlRel)
-				. ' OR '
-				. $db->quoteName('old_url') . ' = ' . $db->quote($orgurlWithoutQuery)
-				. ' OR '
-				. $db->quoteName('old_url') . ' = ' . $db->quote($orgurlRelWithoutQuery)
 				. ')'
 			);
 
@@ -177,16 +163,7 @@ class PlgSystemRedirect extends JPlugin
 		}
 
 		$possibleMatches = array_unique(
-			array(
-				$url,
-				$urlRel,
-				$urlWithoutQuery,
-				$urlRelWithoutQuery,
-				$orgurl,
-				$orgurlRel,
-				$orgurlWithoutQuery,
-				$orgurlRelWithoutQuery,
-			)
+			array($url, $urlRel, $urlWithoutQuery, $urlRelWithoutQuery)
 		);
 
 		foreach ($possibleMatches as $match)
@@ -203,7 +180,7 @@ class PlgSystemRedirect extends JPlugin
 		}
 
 		// A redirect object was found and, if published, will be used
-		if ($redirect !== null && ((int) $redirect->published === 1))
+		if (!is_null($redirect) && ((int) $redirect->published === 1))
 		{
 			if (!$redirect->header || (bool) JComponentHelper::getParams('com_redirect')->get('mode', false) === false)
 			{
@@ -216,7 +193,7 @@ class PlgSystemRedirect extends JPlugin
 
 				$oldUrlParts = parse_url($redirect->old_url);
 
-				if ($urlQuery !== '' && empty($oldUrlParts['query']))
+				if (empty($oldUrlParts['query']) && $urlQuery !== '')
 				{
 					$redirect->new_url .= '?' . $urlQuery;
 				}
@@ -229,7 +206,7 @@ class PlgSystemRedirect extends JPlugin
 			JErrorPage::render(new RuntimeException($error->getMessage(), $redirect->header, $error));
 		}
 		// No redirect object was found so we create an entry in the redirect table
-		elseif ($redirect === null)
+		elseif (is_null($redirect))
 		{
 			$params = new Registry(JPluginHelper::getPlugin('system', 'redirect')->params);
 
@@ -257,7 +234,7 @@ class PlgSystemRedirect extends JPlugin
 		// We have an unpublished redirect object, increment the hit counter
 		else
 		{
-			$redirect->hits++;
+			$redirect->hits += 1;
 
 			try
 			{

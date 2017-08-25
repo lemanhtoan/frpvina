@@ -59,9 +59,12 @@ class PlgSearchContent extends JPlugin
 
 		$searchText = $text;
 
-		if (is_array($areas) && !array_intersect($areas, array_keys($this->onContentSearchAreas())))
+		if (is_array($areas))
 		{
-			return array();
+			if (!array_intersect($areas, array_keys($this->onContentSearchAreas())))
+			{
+				return array();
+			}
 		}
 
 		$sContent  = $this->params->get('search_content', 1);
@@ -74,7 +77,7 @@ class PlgSearchContent extends JPlugin
 
 		$text = trim($text);
 
-		if ($text === '')
+		if ($text == '')
 		{
 			return array();
 		}

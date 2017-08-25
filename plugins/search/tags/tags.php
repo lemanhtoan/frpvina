@@ -66,14 +66,17 @@ class PlgSearchTags extends JPlugin
 		$section = JText::_('PLG_SEARCH_TAGS_TAGS');
 		$limit   = $this->params->def('search_limit', 50);
 
-		if (is_array($areas) && !array_intersect($areas, array_keys($this->onContentSearchAreas())))
+		if (is_array($areas))
 		{
-			return array();
+			if (!array_intersect($areas, array_keys($this->onContentSearchAreas())))
+			{
+				return array();
+			}
 		}
 
 		$text = trim($text);
 
-		if ($text === '')
+		if ($text == '')
 		{
 			return array();
 		}
@@ -153,7 +156,7 @@ class PlgSearchTags extends JPlugin
 			foreach ($rows as $key => $row)
 			{
 				$rows[$key]->href       = TagsHelperRoute::getTagRoute($row->id);
-				$rows[$key]->text       = ($row->description !== '' ? $row->description : $row->title);
+				$rows[$key]->text       = ($row->description != '' ? $row->description : $row->title);
 				$rows[$key]->text      .= $row->note;
 				$rows[$key]->section    = $section;
 				$rows[$key]->created    = $row->created;

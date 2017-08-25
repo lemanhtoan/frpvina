@@ -45,32 +45,6 @@ class JCacheStorageFile extends JCacheStorage
 	{
 		parent::__construct($options);
 		$this->_root = $options['cachebase'];
-
-		// Workaround for php 5.3
-		$locked_files = &$this->_locked_files;
-
-		// Remove empty locked files at script shutdown.
-		$clearAtShutdown = function () use (&$locked_files)
-		{
-			foreach ($locked_files as $path => $handle)
-			{
-				if (is_resource($handle))
-				{
-					@flock($handle, LOCK_UN);
-					@fclose($handle);
-				}
-
-				// Delete only the existing file if it is empty.
-				if (@filesize($path) === 0)
-				{
-					@unlink($path);
-				}
-
-				unset($locked_files[$path]);
-			}
-		};
-
-		register_shutdown_function($clearAtShutdown);
 	}
 
 	/**
@@ -162,7 +136,7 @@ class JCacheStorageFile extends JCacheStorage
 
 			foreach ($files as $file)
 			{
-				$item->updateSize(filesize($path . '/' . $folder . '/' . $file));
+				$item->updateSize(filesize($path . '/' . $folder . '/' . $file) / 1024);
 			}
 
 			$data[$folder] = $item;
@@ -423,9 +397,6 @@ class JCacheStorageFile extends JCacheStorage
 	/**
 	 * Check if a cache object has expired
 	 *
-	 * Using @ error suppressor here because between if we did a file_exists() and then filemsize() there will
-	 * be a little time space when another process can delete the file and then you get PHP Warning
-	 *
 	 * @param   string  $id     Cache ID to check
 	 * @param   string  $group  The cache data group
 	 *
@@ -446,12 +417,6 @@ class JCacheStorageFile extends JCacheStorage
 			{
 				@unlink($path);
 
-				return false;
-			}
-
-			// If, right now, the file does not exist then return false
-			if (@filesize($path) == 0)
-			{
 				return false;
 			}
 

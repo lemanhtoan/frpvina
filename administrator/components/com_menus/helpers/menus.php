@@ -301,7 +301,7 @@ class MenusHelper
 	}
 
 	/**
-	 * Get the associations
+	 * Get the items associations
 	 *
 	 * @param   integer  $pk  Menu item id
 	 *

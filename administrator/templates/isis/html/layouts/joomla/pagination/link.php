@@ -53,7 +53,7 @@ switch ((string) $item->text)
 		break;
 }
 
-$item->text .= $addText ?: '';
+$item->text .= $addText ? $addText : '';
 
 if ($icon !== null)
 {

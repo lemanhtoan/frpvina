@@ -1,4 +1,3 @@
-UPDATE "#__categories" SET published = 1 WHERE alias = 'root';
 UPDATE "c"
 SET published = c2.newPublished
 FROM "#__categories" AS "c"
@@ -8,7 +7,6 @@ FROM "#__categories" AS "c2"
 INNER JOIN "#__categories" AS "p" ON p.lft <= c2.lft AND c2.rgt <= p.rgt
 GROUP BY c2.id) AS c2 ON c2.id = c.id;
 
-UPDATE "#__menu" SET published = 1 WHERE alias = 'root';
 UPDATE "c"
 SET published = c2.newPublished
 FROM "#__menu" AS "c"

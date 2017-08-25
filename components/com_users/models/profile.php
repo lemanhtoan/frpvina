@@ -188,12 +188,12 @@ class UsersModelProfile extends JModelForm
 		if ($username)
 		{
 			$isUsernameCompliant  = !(preg_match('#[<>"\'%;()&\\\\]|\\.\\./#', $username) || strlen(utf8_decode($username)) < 2
-				|| trim($username) !== $username);
+				|| trim($username) != $username);
 		}
 
 		$this->setState('user.username.compliant', $isUsernameCompliant);
 
-		if ($isUsernameCompliant && !JComponentHelper::getParams('com_users')->get('change_login_name'))
+		if (!JComponentHelper::getParams('com_users')->get('change_login_name') && $isUsernameCompliant)
 		{
 			$form->setFieldAttribute('username', 'class', '');
 			$form->setFieldAttribute('username', 'filter', '');
@@ -311,7 +311,7 @@ class UsersModelProfile extends JModelForm
 		// Unset the username if it should not be overwritten
 		$isUsernameCompliant = $this->getState('user.username.compliant');
 
-		if ($isUsernameCompliant && !JComponentHelper::getParams('com_users')->get('change_login_name'))
+		if (!JComponentHelper::getParams('com_users')->get('change_login_name') && $isUsernameCompliant)
 		{
 			unset($data['username']);
 		}
@@ -329,7 +329,7 @@ class UsersModelProfile extends JModelForm
 			// Get the current One Time Password (two factor auth) configuration
 			$otpConfig = $model->getOtpConfig($userId);
 
-			if ($twoFactorMethod !== 'none')
+			if ($twoFactorMethod != 'none')
 			{
 				// Run the plugins
 				FOFPlatform::getInstance()->importPlugin('twofactorauth');
@@ -395,12 +395,8 @@ class UsersModelProfile extends JModelForm
 			return false;
 		}
 
-		// Some contexts may not use tags data at all, so we allow callers to disable loading tag data
-		if ($this->getState('load_tags', true))
-		{
-			$user->tags = new JHelperTags;
-			$user->tags->getTagIds($user->id, 'com_users.user');
-		}
+		$user->tags = new JHelperTags;
+		$user->tags->getTagIds($user->id, 'com_users.user');
 
 		return $user->id;
 	}

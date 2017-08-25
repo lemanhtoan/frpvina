@@ -15,13 +15,13 @@ class JConfig {
 	public $host = 'localhost';
 	public $user = 'root';
 	public $password = '';
-	public $db = 'frpvina';
-	public $dbprefix = 'frp_';
+	public $db = 'vina';
+	public $dbprefix = 'vina_';
 	public $live_site = '';
-	public $secret = 'wbysiy1N9CQ3talW';
+	public $secret = 'ygLhj1tj2IrwQu5Y';
 	public $gzip = '0';
 	public $error_reporting = 'default';
-	public $helpurl = 'https://help.joomla.org/proxy/index.php?option=com_help&amp;keyref=Help{major}{minor}:{keyref}';
+	public $helpurl = 'https://help.joomla.org/proxy/index.php?keyref=Help{major}{minor}:{keyref}';
 	public $ftp_host = '';
 	public $ftp_port = '';
 	public $ftp_user = '';
@@ -56,8 +56,8 @@ class JConfig {
 	public $unicodeslugs = '0';
 	public $feed_limit = '10';
 	public $feed_email = 'none';
-	public $log_path = 'F:\\xampp\\htdocs\\frpvina\\administrator/logs';
-	public $tmp_path = 'F:\\xampp\\htdocs\\frpvina/tmp';
+	public $log_path = 'F:\\xampp\\htdocs\\vina\\administrator/logs';
+	public $tmp_path = 'F:\\xampp\\htdocs\\vina/tmp';
 	public $lifetime = '15';
 	public $session_handler = 'database';
 }

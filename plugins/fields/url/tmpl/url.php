@@ -19,11 +19,7 @@ $attributes = '';
 
 if (!JUri::isInternal($value))
 {
-	$attributes = ' rel="nofollow noopener noreferrer" target="_blank"';
+	$attributes = 'rel="nofollow noopener noreferrer" target="_blank"';
 }
 
-echo sprintf('<a href="%s"%s>%s</a>',
-	htmlspecialchars($value),
-	$attributes,
-	htmlspecialchars($value)
-);
+echo '<a href="' . htmlspecialchars($value) . '" ' . $attributes . '>' . htmlspecialchars($value) . '</a>';

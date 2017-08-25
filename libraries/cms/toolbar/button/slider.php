@@ -4,7 +4,7 @@
  * @subpackage  Toolbar
  *
  * @copyright   Copyright (C) 2005 - 2017 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -89,7 +89,7 @@ class JToolbarButtonSlider extends JToolbarButton
 	 */
 	private function _getCommand($url)
 	{
-		if (strpos($url, 'http') !== 0)
+		if (substr($url, 0, 4) !== 'http')
 		{
 			$url = JUri::base() . $url;
 		}

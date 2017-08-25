@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="2.5" method="upgrade">
+    <name>RealEstateManager</name>
+    <creationDate>May 2017</creationDate>
+    <author>Rob de Cleen, Andrey Kvasnevskiy</author>
+    <authorEmail>rob@decleen.com; akbet@mail.ru; </authorEmail>
+    <authorUrl>http://www.ordasoft.com</authorUrl>
+    <copyright>ordasoft - Andrey Kvasnevskiy </copyright>
+    <license>This component is released under License from included LICENSE.txt file</license>
+    <version>3.9.10 Free</version>
+    <description>RealEstateManager - component for sale and rent houses</description>
+
+    <!-- Custom un/installer for 1.6 -->
+    <scriptfile>install.uninstall.script.php</scriptfile>
+    <!-- Custom installer for 1.5 -->
+    <installfile>install.realestatemanager.php</installfile>
+    <installfile>install.realestatemanager.helper.php</installfile>
+    <!-- Custom uninstaller for 1.5 -->
+    <uninstallfile>uninstall.realestatemanager.php</uninstallfile>
+
+    <params>
+        <param name="back_button" type="list" default="" label="Back Button" 
+               description="Show/Hide a Back Button, that returns you to the previously view page">
+            <option value="">Use Global</option>
+            <option value="0">Hide</option>
+            <option value="1">Show</option>
+        </param>
+    </params>
+
+    <files folder="../site">
+      <filename>index.html</filename>
+      <filename>compat.joomla1.5.php</filename>
+      <filename>functions.php</filename>
+      <filename>router.php</filename>
+      <filename>realestatemanager.php</filename>
+      <filename>realestatemanager.html.php</filename>
+      <filename>realestatemanager.class.php</filename>
+      <filename>realestatemanager.class.rent.php</filename>
+      <filename>realestatemanager.class.rent_request.php</filename>
+      <filename>realestatemanager.class.buying_request.php</filename>
+      <filename>realestatemanager.class.review.php</filename>
+      <filename>realestatemanager.main.categories.class.php</filename>
+      <filename>realestatemanager.class.language.php</filename>
+      <filename>realestatemanager.class.feature.php</filename>
+      <filename>captcha.php</filename>
+      <filename>featured_ico/index.html</filename>
+      <filename>metadata.xml</filename>
+      <folder>helpers</folder>
+      <folder>edocs</folder>
+      <folder>images</folder>
+      <folder>includes</folder>
+      <folder>photos</folder>
+      <folder>media</folder>
+      <folder>lang</folder>
+      <folder>views</folder>
+      <folder>TABS</folder>
+      <folder>lightbox</folder>
+      <folder>sef_ext</folder>
+      <folder>meta_ext</folder>
+    </files>
+    
+   <languages folder="../language">
+            <language tag="en-GB">en-GB/en-GB.com_realestatemanager.sys.ini</language>
+    </languages>
+
+    <administration>
+        <menu img="class:dm_component">RealEstateManager</menu>
+        <submenu>
+            <menu img="class:module">Houses</menu>
+            <menu img="class:category" link="option=com_realestatemanager&amp;section=categories">Categories</menu>
+            <menu img="class:writemess" link="option=com_realestatemanager&amp;section=featured_manager">Amenities Manager</menu>
+            <menu img="class:writemess" task="rent_requests">Booking Manager</menu>
+            <menu img="class:writemess" task="users_rent_history">Booking History</menu>
+            <menu img="class:writemess" task="buying_requests">Sale Manager</menu>
+            <menu img="class:writemess" link="option=com_realestatemanager&amp;section=language_manager">Language Manager</menu>
+            <menu img="class:config" task="config">Settings</menu>
+            <menu img="class:info" task="about">About</menu>
+        </submenu>
+
+    <files folder="../admin">
+      <filename>realestatemanager.xml</filename>
+      <filename>toolbar_ext.php</filename>
+      <filename>menubar_ext.php</filename>
+      <filename>index.html</filename>
+      <filename>language.php</filename>
+      <filename>realestatemanager.php</filename>
+      <filename>realestatemanager.html.php</filename>
+      <filename>realestatemanager.class.impexp.php</filename>
+      <filename>realestatemanager.class.others.php</filename>
+      <filename>realestatemanager.class.conf.php</filename>
+      <filename>admin_realestatemanager.css</filename>
+      <filename>toolbar.realestatemanager.php</filename>
+      <filename>toolbar.realestatemanager.html.php</filename>
+      <filename>install.realestatemanager.php</filename>
+      <filename>install.realestatemanager.helper.php</filename> 
+      <filename>uninstall.realestatemanager.php</filename>
+      <folder>doc</folder>
+      <folder>exports</folder>
+      <folder>images</folder>
+      <folder>elements</folder>
+    </files>
+      <languages folder="../language">
+          <language tag="en-GB">en-GB/en-GB.com_realestatemanager.sys.ini</language>
+      </languages>
+    </administration>
+
+  <updateservers>
+    <server type="extension" priority="1" name="Realestatemanager`s Update">http://ordasoft.com/xml_update/realestatemanager_update.xml</server>
+  </updateservers>
+</extension>

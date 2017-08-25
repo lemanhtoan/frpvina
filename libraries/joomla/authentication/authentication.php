@@ -319,7 +319,7 @@ class JAuthentication extends JObject
 	 * @param   JAuthenticationResponse  $response  response including username of the user to authorise
 	 * @param   array                    $options   list of options
 	 *
-	 * @return  JAuthenticationResponse[]  Array of authentication response objects
+	 * @return  array[JAuthenticationResponse]  results of authorisation
 	 *
 	 * @since  11.2
 	 */

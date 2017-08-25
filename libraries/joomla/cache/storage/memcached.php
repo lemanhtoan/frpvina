@@ -12,7 +12,7 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Memcached cache storage handler
  *
- * @link   https://secure.php.net/manual/en/book.memcached.php
+ * @see    https://secure.php.net/manual/en/book.memcached.php
  * @since  12.1
  */
 class JCacheStorageMemcached extends JCacheStorage
@@ -206,7 +206,7 @@ class JCacheStorageMemcached extends JCacheStorage
 						$item = $data[$group];
 					}
 
-					$item->updateSize($key->size);
+					$item->updateSize($key->size / 1024);
 
 					$data[$group] = $item;
 				}

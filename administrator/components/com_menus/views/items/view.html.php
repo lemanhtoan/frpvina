@@ -64,7 +64,9 @@ class MenusViewItems extends JViewLegacy
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
-			throw new Exception(implode("\n", $errors), 500);
+			JError::raiseError(500, implode("\n", $errors));
+
+			return false;
 		}
 
 		$this->ordering = array();
@@ -234,7 +236,7 @@ class MenusViewItems extends JViewLegacy
 		}
 		else
 		{
-			// In menu associations modal we need to remove language filter if forcing a language.
+			// In menu items associations modal we need to remove language filter if forcing a language.
 			if ($forcedLanguage = JFactory::getApplication()->input->get('forcedLanguage', '', 'CMD'))
 			{
 				// If the language is forced we can't allow to select the language, so transform the language selector filter into an hidden field.

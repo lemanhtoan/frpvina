@@ -58,7 +58,7 @@ if ($this->params->get('boldText'))
 }
 
 // Load specific language related CSS
-JHtml::_('stylesheet', 'administrator/language/' . $lang->getTag() . '/' . $lang->getTag() . '.css', array('version' => 'auto'));
+JHtml::_('stylesheet', 'language/' . $lang->getTag() . '/' . $lang->getTag() . '.css', array('version' => 'auto', 'relative' => true));
 
 // Load custom.css
 JHtml::_('stylesheet', 'custom.css', array('version' => 'auto', 'relative' => true));

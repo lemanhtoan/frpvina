@@ -12,9 +12,8 @@ defined('JPATH_PLATFORM') or die;
 /**
  * Cache lite storage handler
  *
- * @link   http://pear.php.net/package/Cache_Lite/
+ * @see    http://pear.php.net/package/Cache_Lite/
  * @since  11.1
- * @deprecated  4.0 Deprecated without replacement
  */
 class JCacheStorageCachelite extends JCacheStorage
 {
@@ -154,7 +153,7 @@ class JCacheStorageCachelite extends JCacheStorage
 
 				$filename = $file->getFilename();
 
-				$item->updateSize(filesize($path . '/' . $foldername . '/' . $filename));
+				$item->updateSize(filesize($path . '/' . $foldername . '/' . $filename) / 1024);
 			}
 
 			$data[$foldername] = $item;

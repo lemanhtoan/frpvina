@@ -43,17 +43,9 @@ class ModulesViewModules extends JViewLegacy
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
-			throw new Exception(implode("\n", $errors), 500);
-		}
+			JError::raiseError(500, implode("\n", $errors));
 
-		// We do not need the Page and the Language filters when filtering by administrator
-		if ($this->state->get('client_id') == 1)
-		{
-			unset($this->activeFilters['menuitem']);
-			$this->filterForm->removeField('menuitem', 'filter');
-
-			unset($this->activeFilters['language']);
-			$this->filterForm->removeField('language', 'filter');
+			return false;
 		}
 
 		// We don't need the toolbar in the modal window.

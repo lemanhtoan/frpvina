@@ -79,7 +79,7 @@ class JApplicationWeb extends JApplicationBase
 	 *
 	 * @var    object
 	 * @since  3.4
-	 * @link   http://tools.ietf.org/pdf/rfc7231.pdf
+	 * @see    http://tools.ietf.org/pdf/rfc7231.pdf
 	 */
 	private $responseMap = array(
 		300 => 'HTTP/1.1 300 Multiple Choices',
@@ -99,7 +99,7 @@ class JApplicationWeb extends JApplicationBase
          * 
          * @var    object
          * @since  3.5.2
-         * @link   https://tools.ietf.org/html/rfc7230
+         * @see    https://tools.ietf.org/html/rfc7230
          */
 	private $singleValueResponseHeaders = array(
 		'status', // This is not a valid header name, but the representation used by Joomla to identify the HTTP Response Code
@@ -117,8 +117,7 @@ class JApplicationWeb extends JApplicationBase
 		'Accept-Ranges',
 		'Content-Range',
 		'Age',
-		'Expires',
-		'Clear-Site-Data',
+		'Expires'
 	);
 
 	/**
@@ -566,8 +565,8 @@ class JApplicationWeb extends JApplicationBase
 				}
 
 				// All other cases use the more efficient HTTP header for redirection.
-				$this->setHeader('Status', $status, true);
-				$this->setHeader('Location', $url, true);
+				$this->header($this->responseMap[$status]);
+				$this->header('Location: ' . $url);
 			}
 		}
 
@@ -720,7 +719,7 @@ class JApplicationWeb extends JApplicationBase
 				if ('status' == strtolower($header['name']))
 				{
 					// 'status' headers indicate an HTTP status, and need to be handled slightly differently
-					$this->header('HTTP/1.1 ' . (int) $header['value'], true);
+					$this->header('HTTP/1.1 ' . $header['value'], null, (int) $header['value']);
 				}
 				else
 				{

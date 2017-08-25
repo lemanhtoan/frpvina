@@ -277,8 +277,6 @@ class FieldsHelper
 			return true;
 		}
 
-		$context = $parts[0] . '.' . $parts[1];
-
 		// When no fields available return here
 		$fields = self::getFields($parts[0] . '.' . $parts[1], new JObject);
 
@@ -314,6 +312,25 @@ class FieldsHelper
 		 */
 		if ($form->getField('catid') && $parts[0] != 'com_fields')
 		{
+			// The uri to submit to
+			$uri = clone JUri::getInstance('index.php');
+
+			/*
+			 * Removing the catid parameter from the actual URL and set it as
+			 * return
+			*/
+			$returnUri = clone JUri::getInstance();
+			$returnUri->setVar('catid', null);
+			$uri->setVar('return', base64_encode($returnUri->toString()));
+
+			// Setting the options
+			$uri->setVar('option', 'com_fields');
+			$uri->setVar('task', 'field.storeform');
+			$uri->setVar('context', $parts[0] . '.' . $parts[1]);
+			$uri->setVar('formcontrol', $form->getFormControl());
+			$uri->setVar('view', null);
+			$uri->setVar('layout', null);
+
 			/*
 			 * Setting the onchange event to reload the page when the category
 			 * has changed
@@ -323,10 +340,11 @@ class FieldsHelper
 			// Preload spindle-wheel when we need to submit form due to category selector changed
 			JFactory::getDocument()->addScriptDeclaration("
 			function categoryHasChanged(element) {
+				Joomla.loadingLayer('show');
 				var cat = jQuery(element);
 				if (cat.val() == '" . $assignedCatids . "')return;
-				Joomla.loadingLayer('show');
-				jQuery('input[name=task]').val('" . $section . ".reload');
+				jQuery('input[name=task]').val('field.storeform');
+				element.form.action='" . $uri . "';
 				element.form.submit();
 			}
 			jQuery( document ).ready(function() {
@@ -385,24 +403,10 @@ class FieldsHelper
 		// On the front, sometimes the admin fields path is not included
 		JTable::addIncludePath(JPATH_ADMINISTRATOR . '/components/com_fields/tables');
 
-		$model = JModelLegacy::getInstance('Groups', 'FieldsModel', array('ignore_request' => true));
-		$model->setState('filter.context', $context);
-
-		/**
-		 * $model->getItems() would only return existing groups, but we also
-		 * have the 'default' group with id 0 which is not in the database,
-		 * so we create it virtually here.
-		 */
-		$defaultGroup = new \stdClass;
-		$defaultGroup->id = 0;
-		$defaultGroup->title = '';
-		$defaultGroup->description = '';
-		$iterateGroups = array_merge(array($defaultGroup), $model->getItems());
-
 		// Looping through the groups
-		foreach ($iterateGroups as $group)
+		foreach ($fieldsPerGroup as $group_id => $groupFields)
 		{
-			if (empty($fieldsPerGroup[$group->id]))
+			if (!$groupFields)
 			{
 				continue;
 			}
@@ -410,32 +414,49 @@ class FieldsHelper
 			// Defining the field set
 			/** @var DOMElement $fieldset */
 			$fieldset = $fieldsNode->appendChild(new DOMElement('fieldset'));
-			$fieldset->setAttribute('name', 'fields-' . $group->id);
+			$fieldset->setAttribute('name', 'fields-' . $group_id);
 			$fieldset->setAttribute('addfieldpath', '/administrator/components/' . $component . '/models/fields');
 			$fieldset->setAttribute('addrulepath', '/administrator/components/' . $component . '/models/rules');
 
-			$label       = $group->title;
-			$description = $group->description;
+			$label       = '';
+			$description = '';
 
-			if (!$label)
+			if ($group_id)
 			{
-				$key = strtoupper($component . '_FIELDS_' . $section . '_LABEL');
+				$group = JTable::getInstance('Group', 'FieldsTable');
+				$group->load($group_id);
 
-				if (!JFactory::getLanguage()->hasKey($key))
+				if ($group->id)
 				{
-					$key = 'JGLOBAL_FIELDS';
+					$label       = $group->title;
+					$description = $group->description;
 				}
-
-				$label = $key;
 			}
 
-			if (!$description)
+			if (!$label || !$description)
 			{
-				$key = strtoupper($component . '_FIELDS_' . $section . '_DESC');
+				$lang = JFactory::getLanguage();
 
-				if (JFactory::getLanguage()->hasKey($key))
+				if (!$label)
 				{
-					$description = $key;
+					$key = strtoupper($component . '_FIELDS_' . $section . '_LABEL');
+
+					if (!$lang->hasKey($key))
+					{
+						$key = 'JGLOBAL_FIELDS';
+					}
+
+					$label = $key;
+				}
+
+				if (!$description)
+				{
+					$key = strtoupper($component . '_FIELDS_' . $section . '_DESC');
+
+					if ($lang->hasKey($key))
+					{
+						$description = $key;
+					}
 				}
 			}
 
@@ -443,11 +464,11 @@ class FieldsHelper
 			$fieldset->setAttribute('description', strip_tags($description));
 
 			// Looping through the fields for that context
-			foreach ($fieldsPerGroup[$group->id] as $field)
+			foreach ($groupFields as $field)
 			{
 				try
 				{
-					JFactory::getApplication()->triggerEvent('onCustomFieldsPrepareDom', array($field, $fieldset, $form));
+					JEventDispatcher::getInstance()->trigger('onCustomFieldsPrepareDom', array($field, $fieldset, $form));
 
 					/*
 					 * If the field belongs to an assigned_cat_id but the assigned_cat_ids in the data

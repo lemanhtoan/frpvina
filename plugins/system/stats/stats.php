@@ -9,9 +9,6 @@
 
 defined('_JEXEC') or die;
 
-// Uncomment the following line to enable debug mode for testing purposes. Note: statistics will be sent on every page load
-// define('PLG_SYSTEM_STATS_DEBUG', 1);
-
 /**
  * Statistics system plugin. This sends anonymous data back to the Joomla! Project about the
  * PHP, SQL, Joomla and OS versions
@@ -277,7 +274,7 @@ class PlgSystemStats extends JPlugin
 	/**
 	 * Get the layout paths
 	 *
-	 * @return  array
+	 * @return  array()
 	 *
 	 * @since   3.5
 	 */
@@ -312,7 +309,7 @@ class PlgSystemStats extends JPlugin
 	/**
 	 * Get the data that will be sent to the stats server.
 	 *
-	 * @return  array
+	 * @return  array.
 	 *
 	 * @since   3.5
 	 */
@@ -366,7 +363,7 @@ class PlgSystemStats extends JPlugin
 	 */
 	private function isDebugEnabled()
 	{
-		return defined('PLG_SYSTEM_STATS_DEBUG');
+		return ((int) $this->params->get('debug', 0) === 1);
 	}
 
 	/**
@@ -438,7 +435,7 @@ class PlgSystemStats extends JPlugin
 		$this->params->set('lastrun', time());
 		$this->params->set('unique_id', $this->getUniqueId());
 		$interval = (int) $this->params->get('interval', 12);
-		$this->params->set('interval', $interval ?: 12);
+		$this->params->set('interval', $interval ? $interval : 12);
 
 		$query = $this->db->getQuery(true)
 				->update($this->db->quoteName('#__extensions'))

@@ -58,7 +58,6 @@ class InstallerControllerManage extends JControllerLegacy
 		else
 		{
 			// Get the model.
-			/** @var InstallerModelManage $model */
 			$model = $this->getModel('manage');
 
 			// Change the state of the records.
@@ -96,9 +95,7 @@ class InstallerControllerManage extends JControllerLegacy
 		// Check for request forgeries.
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
-		$eid = $this->input->get('cid', array(), 'array');
-
-		/** @var InstallerModelManage $model */
+		$eid   = $this->input->get('cid', array(), 'array');
 		$model = $this->getModel('manage');
 
 		$eid = ArrayHelper::toInteger($eid, array());

@@ -12,7 +12,7 @@ defined('JPATH_PLATFORM') or die;
 /**
  * APC cache storage handler
  *
- * @link   https://secure.php.net/manual/en/book.apc.php
+ * @see    https://secure.php.net/manual/en/book.apc.php
  * @since  11.1
  */
 class JCacheStorageApc extends JCacheStorage
@@ -96,7 +96,7 @@ class JCacheStorageApc extends JCacheStorage
 					$item = $data[$group];
 				}
 
-				$item->updateSize($key['mem_size']);
+				$item->updateSize($key['mem_size'] / 1024);
 
 				$data[$group] = $item;
 			}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="3.0" group="search" method="upgrade">
+    <name>RealEstateManager Search</name>
+    <author>OrdaSoft - Andrey Kvasnevsky</author>
+    <creationDate>Updated on May 2013</creationDate>
+    <authorEmail>akbet@ordasoft.com</authorEmail>
+    <license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+    <copyright>(C) 2012 OrdaSoft - Andrey Kvasnevsky</copyright>
+    <authorUrl>http://www.ordasoft.com</authorUrl>
+    <version>2.3</version>
+    <description><![CDATA[ <b>RealEstateManager Search</b> allows search houses from the site search.]]></description>
+
+    <files>
+        <filename plugin="realestatemanagersearch_j3">realestatemanagersearch_j3.php</filename>
+    </files>
+
+
+        <params>
+            
+                <param name="search_limit" type="text" size="5" default="50" label="Search Limit" description="Number of Search items to return"/>
+                <param name="ItemId" type="text" multiple="false" size="3" default="" label="ItemId" description="Enter Id for Menu Item com_realestatemanager" >
+            </param>
+        </params>
+    
+
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="search_limit" type="text" size="5" default="50" label="Search Limit" description="Number of Search items to return"/>
+                <field name="ItemId" type="text" multiple="false" size="3" default="" label="ItemId" description="Enter Id for Menu Item com_realestatemanager" />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

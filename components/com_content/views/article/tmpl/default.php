@@ -81,8 +81,7 @@ JHtml::_('behavior.caption');
 	<?php echo $this->item->event->afterDisplayTitle; ?>
 
 	<?php if ($useDefList && ($info == 0 || $info == 2)) : ?>
-		<?php // Todo: for Joomla4 joomla.content.info_block.block can be changed to joomla.content.info_block ?>
-		<?php echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'above')); ?>
+		<?php echo JLayoutHelper::render('joomla.content.info_block', array('item' => $this->item, 'params' => $params, 'position' => 'above')); ?>
 	<?php endif; ?>
 
 	<?php if ($info == 0 && $params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
@@ -114,8 +113,7 @@ JHtml::_('behavior.caption');
 
 	<?php if ($info == 1 || $info == 2) : ?>
 		<?php if ($useDefList) : ?>
-				<?php // Todo: for Joomla4 joomla.content.info_block.block can be changed to joomla.content.info_block ?>
-			<?php echo JLayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below')); ?>
+			<?php echo JLayoutHelper::render('joomla.content.info_block', array('item' => $this->item, 'params' => $params, 'position' => 'below')); ?>
 		<?php endif; ?>
 		<?php if ($params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>
 			<?php $this->item->tagLayout = new JLayoutFile('joomla.content.tags'); ?>

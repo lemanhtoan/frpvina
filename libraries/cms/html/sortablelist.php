@@ -4,7 +4,7 @@
  * @subpackage  HTML
  *
  * @copyright   Copyright (C) 2005 - 2017 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -47,7 +47,7 @@ abstract class JHtmlSortablelist
 		}
 
 		// Note: $i is required but has to be an optional argument in the function call due to argument order
-		if ($saveOrderingUrl === null)
+		if (null === $saveOrderingUrl)
 		{
 			throw new InvalidArgumentException('$saveOrderingUrl is a required argument in JHtmlSortablelist::sortable');
 		}

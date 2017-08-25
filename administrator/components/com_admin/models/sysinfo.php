@@ -193,7 +193,7 @@ class AdminModelSysInfo extends JModelLegacy
 	}
 
 	/**
-	 * Obfuscate section values
+	 * Offuscate section values
 	 *
 	 * @param   mixed  $sectionValues  Section data
 	 *
@@ -482,13 +482,18 @@ class AdminModelSysInfo extends JModelLegacy
 				'authorUrl'    => 'unknown',
 			);
 
-			$manifest = new Registry($extension->manifest_cache);
+			$manifest = json_decode($extension->manifest_cache);
+
+			if (!$manifest instanceof stdClass)
+			{
+				continue;
+			}
 
 			$extraData = array(
-				'author'       => $manifest->get('author', ''),
-				'version'      => $manifest->get('version', ''),
-				'creationDate' => $manifest->get('creationDate', ''),
-				'authorUrl'    => $manifest->get('authorUrl', '')
+				'author'       => $manifest->author,
+				'version'      => $manifest->version,
+				'creationDate' => $manifest->creationDate,
+				'authorUrl'    => $manifest->authorUrl,
 			);
 
 			$installed[$extension->name] = array_merge($installed[$extension->name], $extraData);

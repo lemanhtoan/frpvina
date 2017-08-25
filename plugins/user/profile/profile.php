@@ -70,7 +70,7 @@ class PlgUserProfile extends JPlugin
 		{
 			$userId = isset($data->id) ? $data->id : 0;
 
-			if (!isset($data->profile) && $userId > 0)
+			if (!isset($data->profile) and $userId > 0)
 			{
 				// Load the profile data from the database.
 				$db = JFactory::getDbo();
@@ -148,7 +148,7 @@ class PlgUserProfile extends JPlugin
 			// Convert website URL to utf8 for display
 			$value = JStringPunycode::urlToUTF8(htmlspecialchars($value));
 
-			if (strpos($value, 'http') === 0)
+			if (substr($value, 0, 4) === 'http')
 			{
 				return '<a href="' . $value . '">' . $value . '</a>';
 			}
@@ -375,7 +375,7 @@ class PlgUserProfile extends JPlugin
 			if (JDate::getInstance('now') < $date)
 			{
 				// Throw an exception if dob is greather than now.
-				throw new InvalidArgumentException(JText::_('PLG_USER_PROFILE_ERROR_INVALID_DOB_FUTURE_DATE'));
+				throw new InvalidArgumentException(JText::_('PLG_USER_PROFILE_ERROR_INVALID_DOB'));
 			}
 		}
 		// Check that the tos is checked if required ie only in registration from frontend.
@@ -384,10 +384,13 @@ class PlgUserProfile extends JPlugin
 		$tosarticle = $this->params->get('register_tos_article');
 		$tosenabled = ($this->params->get('register-require_tos', 0) == 2);
 
-		// Check that the tos is checked.
-		if ($task === 'register' && $tosenabled && $tosarticle && $option === 'com_users' && !$data['profile']['tos'])
+		if (($task === 'register') && $tosenabled && $tosarticle && ($option === 'com_users'))
 		{
-			throw new InvalidArgumentException(JText::_('PLG_USER_PROFILE_FIELD_TOS_DESC_SITE'));
+			// Check that the tos is checked.
+			if (!$data['profile']['tos'])
+			{
+				throw new InvalidArgumentException(JText::_('PLG_USER_PROFILE_FIELD_TOS_DESC_SITE'));
+			}
 		}
 
 		return true;

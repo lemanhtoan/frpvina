@@ -1,0 +1,431 @@
+/**
+ *
+ * @package  RealEstateManager
+ * @copyright 2012 Andrey Kvasnevskiy-OrdaSoft(akbet@mail.ru); Rob de Cleen(rob@decleen.com); 
+ * Homepage: http://www.ordasoft.com
+ * @version: 3.9 Free
+ * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL
+ *
+ */
+*:hover, 
+*:active,
+*:focus,
+*:visited,
+*:link{outline: none;}
+a img{border: none;}
+a:hover {text-decoration:none!important;}
+h1{
+    color:#4f4f4f;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+hr {
+    border-color: #CECECE -moz-use-text-color #FFFFFF !important;
+    border-style: solid !important;
+    border-width: 1px 0 !important;
+    margin: 20px 0 !important;
+    width: 98%;
+}
+#content textarea,#content input[type="text"],#content input[type="password"],#content input[type="datetime"],#content input[type="datetime-local"],#content input[type="date"],#content input[type="month"],#content input[type="time"],#content input[type="week"],#content input[type="number"],#content input[type="email"],#content input[type="url"],#content input[type="search"],#content input[type="tel"],#content input[type="color"],#content .uneditable-input {
+    border-radius: 0px;
+    color: #555;
+    display: inline-block;
+    font-size: 14px;
+    height: 19px;
+    line-height: 18px;
+    padding: 4px 6px;
+    vertical-align: middle;
+    box-shadow: none;
+}
+#content select {
+    border-radius: 0;
+    box-shadow: none;
+}
+textarea {
+    min-height: 100px !important;
+    min-width: 300px !important;
+}
+input.inputbox::-webkit-input-placeholder {
+    color: red;
+}
+#toolbar-custom .toolbar {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: #F5F5F5;
+    	background-color: #f5f5f5;
+	background-image: -moz-linear-gradient(top,#fff,#e6e6e6);
+	background-image: -webkit-gradient(linear,0 0,0 100%,from(#fff),to(#e6e6e6));
+	background-image: -webkit-linear-gradient(top,#fff,#e6e6e6);
+	background-image: -o-linear-gradient(top,#fff,#e6e6e6);
+	background-image: linear-gradient(to bottom,#fff,#e6e6e6);
+	background-repeat: repeat-x;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe5e5e5', GradientType=0);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
+    border-image: none;
+    border-radius: 4px 4px 4px 4px;
+    border-style: solid;
+    border-width: 1px;
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+	-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+    cursor: pointer;
+    display: inline-block;
+    color: #333333;
+    font-size: 13px;
+    margin-bottom: 0;
+    padding: 2px 7px;
+    text-align: center;
+    vertical-align: middle;
+}
+#toolbar-custom .toolbar img {
+    float: left;
+    height: 16px;
+    margin: 2px 2px 1px 0;
+    width: 16px;
+}
+#toolbar-custom .toolbar:hover {
+    background-color: #E6E6E6;
+    background-position: 0 -15px;
+    color: #0088CC;
+    text-decoration: none;
+    transition: background-position 0.1s linear 0s;
+}
+.list_04 select#pub,
+.list_04 select#rent,
+.list_04 select#owner,
+.list_04 select#catid,
+.list_04 select#language,
+.list_11 select#search_languages,
+.list_11 select#search_sys_type {
+    width: 135px;
+}
+.list_04 select#limit, .list_06 select#limit, .list_02 select#limit, .list_03 select#limit, .list_12 select#limit, .list_11 select#limit, .list_13 select#limit {
+    width: 55px;
+}
+.list_04 td a {
+    width: 30px;
+    display: block;
+}
+.tabs .closed {
+    background: #efefef;
+    border-top:1px solid #ddd;
+    border-right:1px solid #ddd;
+    border-left:1px solid #ddd;
+    margin: 0 10px -1px 0;
+    font-size: 12px;
+    height: 40px;
+    font-weight: normal;
+    padding: 0 10px;
+    text-align: center;
+}
+.tabs .closed:last-child, .tabs .open:last-child {
+    margin: 0 0 -1px 0;
+}
+.tabs .open {
+    background:  #fff;
+    border-top:1px solid #ddd;
+    border-right:1px solid #ddd;
+    border-left:1px solid #ddd;
+    border-bottom: 1px solid #fff;
+    height: 40px;
+    padding: 0 10px;
+    text-align: center; 
+    margin: 0 10px -1px 0;
+}
+.tabs .open h3 a {
+    color: #000;
+}
+.tabs .closed span,
+.tabs .open span {
+    display: block;
+}
+.tabs dt {
+    float: left;
+}
+.tabs dt.closed a {
+    color: #909090;
+}
+.tabs dt a:hover {
+    text-decoration: none;
+}
+.tabs h3 {
+    font-size: 12px !important;
+    font-weight: normal;
+    margin: 10px 0 0;
+    white-space: nowrap;
+}
+.adminform {
+    font-size: 14px;
+}
+
+.development {
+    margin: 10px 0 0 0;
+    font-size: 14px;
+}
+dd {
+    margin: 0 !important;
+}
+#configurePane, #tab_group_id, #feature {
+    border-bottom: 1px solid #ddd;
+    display: inline-block;
+}
+.controls label.radio {
+    float: left;
+    margin: 0 0 0 10px;
+    padding: 2px 12px !important;
+    text-align: center;
+}
+.controls input {
+    margin: 0 4px 0 0 !important;
+}
+input[name="foto_high"],
+input[name="foto_width"],
+input[name="fotoupload_high"],
+input[name="fotoupload_width"],
+input[name="fotogallery_high"],
+input[name="fotogallery_width"],
+input[name="fotocategory_high"],
+input[name="fotocategory_width"],
+.form_18 input[name="fotomain_high"],
+.form_18 input[name="fotomain_width"] {
+    width: 93px;
+}
+.form_10 .btn-group .btn {
+    margin: 9px 25px 0 0;
+}
+.form_10 input[name="price"], 
+.form_10 #priceunit {
+    width: 99px;
+}
+input[type="submit"], 
+input[type="button"] {
+    color: #fff!important;
+    text-shadow: none;
+    background-color: #F7A900;!important;
+    *background-color: #F7A900!important;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    cursor: pointer !important;
+    font-size: 15px;
+    font-weight: normal !important;
+    letter-spacing: 1px;
+    padding: 9px 14px !important;
+}
+input[type="submit"]:hover, 
+input[type="button"]:hover {
+    background-color: #F79b00;
+    text-decoration: none;
+}
+.house_categories {
+    color: #acacac;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+.checkbox_rel {
+    background: none repeat scroll 0 0 #efefef;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    overflow: hidden;
+    padding: 8px 5px;
+    display: inline-block;
+    color: #acacac;
+    font-size: 12px;
+    font-weight: bold;
+}
+.checkbox_rel input[type="checkbox"]  {
+    margin: 0 7px 0 0;
+    vertical-align: top;
+}
+.house_feature {
+    display: block;
+    font-size: 14px;
+}
+.form_11 #expiration_date {
+    width: 167px;
+}
+#map_canvas{
+    border: 1px solid #D6D6D6;
+    float: left;
+    height: 345px;
+    margin: 10px 0;
+    width: 100%;
+}
+.form_21 #view_house {
+    width: 140px;
+}
+.form_21 #layout_all_houses {
+    width: 140px;
+}
+div.current label, div.current span.faux-label {
+    clear: right !important;
+    /*display: inline !important;
+    float: left !important;*/
+    margin-top: 4px !important;
+    min-width: 50px !important;
+}
+.adminform.form_14 input {
+      float: none !important;
+}
+#editor-xtd-buttons {
+    margin-top: 10px;
+    float: none;
+}
+#description_tbl {
+  width: 391px !important;
+}
+.slash {
+    display: block;
+    float: left;
+    margin: 7px 5px;
+}
+#patt {
+    border-radius: 3px 3px 3px 3px;
+    color: #555555;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 18px;
+    margin-bottom: 16px;
+    padding: 5px 6px;
+    width: 140px;
+    margin-top:	7px;
+}
+
+input[type="radio"] {
+      margin-left: 20px;
+      width: 15px !important;
+}
+
+.tabs.panel_4_configurePane.closed,
+.tabs.panel_4_configurePane.open {
+width: 115px;
+}
+
+/*______________________________ administrator_new _________________________________ */
+
+.rem_house_contacts {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+}
+.rem_house_contacts .row_add_house{
+    padding: 15px 15px 0 15px;
+}
+.rem_house_contacts #rem_house_titlebox {
+    margin-bottom: 10px;
+    padding: 15px;
+    background-color: #efefef;
+    border-bottom: 1px solid #ddd;
+    color: #acacac;
+    font-weight: bold;
+}
+.rem_house_contacts .row_add_house {
+    padding: 15px 15px 0;
+    overflow: hidden;
+}
+.rem_house_contacts  .row_add_house > span {
+    display: block;
+    float: left;
+    width: 200px;
+}
+.rem_house_input {
+    display: inline-block;
+}
+select#currency_spacial_price, select#priceunit {
+    width: 80px;
+}
+.rem_addlocation {
+    width: 45%;
+    display: inline-block;
+}
+.rem_addlocation_map {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+}
+.accordion-toggle, .adminlist_04 th {
+    color: #acacac;
+    font-weight: bold;
+}
+.row_add_house .accordion-inner, .row_add_house .accordion-heading .accordion-toggle {
+    border-top: none;
+    padding: 0;
+}
+.row_add_house .accordion-group {
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+.accordion-group #rem_house_titlebox, #accordion2 {
+    border-bottom: medium none;
+    margin-bottom: 0;
+}
+.rem_specprice {
+    border: 1px solid #ddd;
+}
+.rem_specprice .specprice_col {
+    padding: 10px;
+}
+#SpecialPriseBlock, .adminlist_04, .list_09 {
+    margin: 10px 0 20px;
+}
+.specprice_col .input-append {
+    margin-right: 10px;
+}
+.adminlist_04 td, .adminlist_04 th, .list_09 td, .list_09 th{
+    padding: 5px 0;
+}
+.adminlist_04 tr:nth-child(odd), .list_09 tr:nth-child(odd) {
+    background: #EFEFEF;
+}
+#content .list_04 td input.inputbox, #content .list_11 tr input.inputbox, #content .list_13 td input.inputbox {
+    width: 140px;
+/*    height: 19px;*/
+}
+.table.list_11 {
+    border: none;
+}
+.table tbody > tr:nth-child(2n) > td {
+    background-color: #f9f9f9;
+}
+.table tr:first-child th, .list_11 tr th  {
+    border-top: 0 none;
+}
+.yesno .controls label.radio:last-child {
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-left: 0;
+}
+.yesno .controls label.radio:first-of-type {
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+#toolbar #toolbar-custom .toolbar img {
+    display: none;
+}
+.house_manager_caption {
+    color: #fff;
+    font-size: 25px;
+}
+.td_notification {
+    background: none repeat scroll 0 0 #efefef;
+    border: 1px solid #ddd;
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 340px;
+}
+.adminform.form_28 td input[disabled="disabled"] {
+    width: 330px;
+}
+.treb_textinput{
+  width:485px;
+}

@@ -371,9 +371,7 @@
     "Shift-Alt-,": "goDocStart", "Shift-Alt-.": "goDocEnd",
     "Ctrl-S": "findNext", "Ctrl-R": "findPrev", "Ctrl-G": quit, "Shift-Alt-5": "replace",
     "Alt-/": "autocomplete",
-    "Enter": "newlineAndIndent",
-    "Ctrl-J": repeated(function(cm) { cm.replaceSelection("\n", "end"); }),
-    "Tab": "indentAuto",
+    "Ctrl-J": "newlineAndIndent", "Enter": false, "Tab": "indentAuto",
 
     "Alt-G G": function(cm) {
       var prefix = getPrefix(cm, true);

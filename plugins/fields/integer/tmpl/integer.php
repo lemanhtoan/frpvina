@@ -18,11 +18,7 @@ if ($value == '')
 
 if (is_array($value))
 {
-	$value = implode(', ', array_map('intval', $value));
-}
-else
-{
-	$value = (int) $value;
+	$value = implode(', ', $value);
 }
 
-echo $value;
+echo (int) $value;

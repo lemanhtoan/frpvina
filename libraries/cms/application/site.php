@@ -527,7 +527,7 @@ final class JApplicationSite extends JApplicationCms
 			{
 				foreach ($templates as $tmpl)
 				{
-					if ($tmpl->template === $template_override)
+					if ($tmpl->template == $template_override)
 					{
 						$template = $tmpl;
 						break;
@@ -549,7 +549,7 @@ final class JApplicationSite extends JApplicationCms
 
 			foreach ($templates as $tmpl)
 			{
-				if ($tmpl->template === 'beez3')
+				if ($tmpl->template == 'beez3')
 				{
 					$template = $tmpl;
 					break;
@@ -622,7 +622,7 @@ final class JApplicationSite extends JApplicationCms
 			}
 		}
 
-		if (empty($options['language']) && $this->getLanguageFilter())
+		if ($this->getLanguageFilter() && empty($options['language']))
 		{
 			// Detect cookie language
 			$lang = $this->input->cookie->get(md5($this->get('secret') . 'language'), null, 'string');
@@ -646,7 +646,7 @@ final class JApplicationSite extends JApplicationCms
 			}
 		}
 
-		if (empty($options['language']) && $this->getDetectBrowser())
+		if ($this->getDetectBrowser() && empty($options['language']))
 		{
 			// Detect browser language
 			$lang = JLanguageHelper::detectLanguage();
@@ -748,7 +748,7 @@ final class JApplicationSite extends JApplicationCms
 				$template = $this->getTemplate(true);
 				$file     = $this->input->get('tmpl', 'index');
 
-				if ($file === 'offline' && !$this->get('offline'))
+				if (!$this->get('offline') && ($file == 'offline'))
 				{
 					$this->set('themeFile', 'index.php');
 				}

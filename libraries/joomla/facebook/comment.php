@@ -12,7 +12,7 @@ defined('JPATH_PLATFORM') or die();
 /**
  * Facebook API Comment class for the Joomla Platform.
  *
- * @link        http://developers.facebook.com/docs/reference/api/Comment/
+ * @see         http://developers.facebook.com/docs/reference/api/Comment/
  * @since       13.1
  * @deprecated  4.0  Use the `joomla/facebook` package via Composer instead
  */

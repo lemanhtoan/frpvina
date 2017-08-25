@@ -212,7 +212,7 @@ class JDocumentFeed extends JDocument
 		// Generate stylesheet links
 		foreach ($this->_styleSheets as $src => $attr)
 		{
-			$data .= "<?xml-stylesheet href=\"$src\" type=\"" . $attr['type'] . "\"?>\n";
+			$data .= "<?xml-stylesheet href=\"$src\" type=\"" . $attr['mime'] . "\"?>\n";
 		}
 
 		// Render the feed

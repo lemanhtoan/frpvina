@@ -50,7 +50,9 @@ class RedirectViewLinks extends JViewLegacy
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
 		{
-			throw new Exception(implode("\n", $errors), 500);
+			JError::raiseError(500, implode("\n", $errors));
+
+			return false;
 		}
 
 		// Show messages about the enabled plugin and if the plugin should collect URLs
@@ -77,7 +79,7 @@ class RedirectViewLinks extends JViewLegacy
 	/**
 	 * Add the page title and toolbar.
 	 *
-	 * @return  void
+	 * @return  void.
 	 *
 	 * @since   1.6
 	 */

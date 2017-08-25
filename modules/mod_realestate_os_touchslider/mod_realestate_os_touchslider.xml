@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.0.0" method="upgrade">
+    <name>Realestate_OS_TouchSlider Free</name>
+    <author>OrdaSoft</author>
+    <creationDate>June 2013</creationDate>
+    <copyright>OrdaSoft 2013</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <authorEmail>akbet@mail.ru</authorEmail>
+    <authorUrl>http://ordasoft.com</authorUrl>
+    <version>3.0.0</version>
+    <description>
+      <![CDATA[
+        <img src="../modules/mod_realestate_os_touchslider/images/os_touch_installation_image.png">
+      ]]>
+    </description>
+    <files>
+        <filename module="mod_realestate_os_touchslider">mod_realestate_os_touchslider.php</filename>
+        <folder>assets</folder>
+        <folder>helpers</folder>
+        <folder>images</folder>
+        <folder>tmpl</folder>
+        <filename>index.html</filename>
+    </files>
+    <config>
+        <fields name="params" >
+
+            <fieldset name="slideshow_options" label="Slideshow options">
+                <field name="countSlides" type="text" size="9" default="1" label="House per slide" description="Quantity of house displayed per slide. Must be less Count books" />
+                <field  name="count_house" type="text" extension="com_realestatemanager"  default="10" label="House in the slider" description="Zero means not display any house. Numbers value must be more then quantity of house per slide" />
+
+                <field name="image_source_type" type="list" default="0" label="Image source size" description="Image source size. Than more size - than better image quality, but asked more time for load">
+                    <option value="0">Big</option>
+                    <option value="1">Medium</option>
+                    <option value="2">Small</option>
+                </field>
+                <field name="width" type="text" class="number slideoptions" size="9" default="300" label="Width" description="You can choose images width in pixels or percentage."/>
+                <field name="height" type="text" class="number slideoptions" size="9" default="200" label="Height" description="Images height in in pixels or percentage." />
+
+                <field name="is_percentage" type="radio" default="pixels" class="btn-group" label="Pixels or percentage" description="Select images width and height in pixels or percentage">
+                  <option value="pixels">pixels</option>
+                  <option value="percentage">percentage</option>
+                </field>
+                <field name="type" type="radio" default="horizontal" class="btn-group" label="Slideshow scrolling" description="Select slideshow scrolling type">
+                    <option value="horizontal">Horizontal</option>
+                    <option value="vertical">Vertical</option>
+                </field>
+                <field name="link_image" type="radio" default="0" class="btn-group" label="Link image" description="Choose a behavior of clicked image. 'Open image in modal' will open the clicked image in Joomla modal window, it's lightbox-like effect.">
+                    <option value="0">Don't link</option>
+                    <option value="1">Hyperlink</option>                    
+                </field>
+
+                <field name="show_title" type="radio" default="1" class="btn-group" label="Show Title" description="Show or hide slide titles">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="link_title" type="radio" default="1" class="btn-group" label="Link title" description="Make the slide titles linkable">
+                  <option value="0">JNO</option>
+                  <option value="1">JYES</option>
+                </field>
+                <field name="limit_title" type="text" default="12" size="10" label="Title limit" description="Set limit in letters for title" />
+
+                <field name="show_desc" type="radio" default="1" class="btn-group" label="Show description" description="Show or hide slide descriptions">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+                <field name="link_desc" type="radio" default="0" class="btn-group" label="Link description" description="Make the slide descriptions linkable">
+                  <option value="0">JNO</option>
+                  <option value="1">JYES</option>
+                </field>
+                <field name="limit_desc" type="text" default="15" size="10" label="Description limit" description="Limit slide description to specified numer of characters (description will be cut after a word containing the character at specified position). Leave empty for no limit." />
+
+                <field name="show_address" type="radio" default="1" class="btn-group" label="Show Address" description="Show or hide propery Address">
+                  <option value="0">JNO</option>
+                  <option value="1">JYES</option>
+                </field>
+                <field name="link_address" type="radio" default="0" class="btn-group" label="Link Address" description="Make the propery Address linkable">
+                  <option value="0">JNO</option>
+                  <option value="1">JYES</option>
+                </field>
+                <field name="limit_address" type="text" default="15" size="10" label="Address limit" description="Limit slide Address to specified numer of characters (Address will be cut after a word containing the character at specified position). Leave empty for no limit." />
+
+                <field  name="cat_id" type="text" extension="com_realestatemanager"  default=" " label="IDs of categories" description="Input IDs of categories through a comma to show all items of this categories. Leave the field empty if you want to show items of all categories." />
+                <field  name="house_id" type="text" extension="com_realestatemanager"  default=" " label="IDs of houses" description="Input IDs of houses through a comma. Leave the field empty if you want to show all items." />
+                
+                <field name="show_price" type="radio" default="1" class="btn-group" label="Show Price" description="Show or hide propery Price">
+                  <option value="0">JNO</option>
+                  <option value="1">JYES</option>
+                </field>
+                <field name="link_price" type="radio" default="0" class="btn-group" label="Link Price" description="Make the propery price linkable">
+                  <option value="0">JNO</option>
+                  <option value="1">JYES</option>
+                </field>
+
+                <field name="arrows" type="radio" default="1" class="btn-group" label="Show navigation arrows" description="Show navigation arrows">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="dots" type="radio" default="1" class="btn-group" label="Show navigation dots" description="Show navigation dots">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="autoplay" type="radio" default="1" class="btn-group" label="Auto play" description="Auto play">
+                    <option value="0">JNO</option>
+                    <option value="1">JYES</option>
+                </field>
+
+                <field name="time-interval" type="text" size="9" default="500" label="Transition duration" description="Transition duration have to less then 'Pause duration'" />
+                <field name="effect-speed" type="text" size="9" default="3500" label="Pause duration" description="Pause duration have to more then 'Transition duration'" />
+
+            </fieldset>
+
+            <fieldset name="advanced" label="Advanced options">
+              <field name="jquery-local" type="radio" class="btn-group" default="0" label="jQuery local"
+                     description=" jQuery local - Set On if you want pull the jQuery from local site">
+                <option value="1">On</option>
+                <option value="0">Off</option>
+              </field>
+              <field name="jquery" type="radio" class="btn-group" default="0" label="jQuery remote"
+                     description=" jQuery remote - Set On if you want pull the jQuery from remote site">
+                <option value="1">On</option>
+                <option value="0">Off</option>
+              </field>
+              <field name="no-conflict" type="radio" class="btn-group" default="0" label="jQuery.noConflict"
+                     description="jQuery.noConflict - Set On if on site you use some other javascript library like mootools or other.">
+                <option value="1">On</option>
+                <option value="0">Off</option>
+              </field>
+              <field name="sufix" type="text" size="9" default="ordasoft" label="Module class sufix"
+                     description="Module class sufix" />
+              <field  name="ItemId"
+                     type="text"
+                     multiple="false"
+                     size="4"
+                     default=""
+                     label="ItemId"
+                     description="Enter Id for Menu Item RealEstateManager" />
+              </fieldset>
+
+        </fields>
+    </config>
+</extension>

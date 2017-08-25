@@ -4,7 +4,7 @@
  * @subpackage  Toolbar
  *
  * @copyright   Copyright (C) 2005 - 2017 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -212,7 +212,7 @@ class JToolbar
 	{
 		$signature = md5($type);
 
-		if ($new === false && isset($this->_buttons[$signature]))
+		if (isset($this->_buttons[$signature]) && $new === false)
 		{
 			return $this->_buttons[$signature];
 		}
@@ -261,6 +261,7 @@ class JToolbar
 
 		if (!class_exists($buttonClass) && !class_exists($buttonClassOld))
 		{
+			// @todo remove code: return	JError::raiseError('SOME_ERROR_CODE', "Module file $buttonFile does not contain class $buttonClass.");
 			return false;
 		}
 
@@ -287,14 +288,17 @@ class JToolbar
 	 */
 	public function addButtonPath($path)
 	{
+		// Just force path to array.
+		settype($path, 'array');
+
 		// Loop through the path directories.
-		foreach ((array) $path as $dir)
+		foreach ($path as $dir)
 		{
 			// No surrounding spaces allowed!
 			$dir = trim($dir);
 
 			// Add trailing separators as needed.
-			if (substr($dir, -1) !== DIRECTORY_SEPARATOR)
+			if (substr($dir, -1) != DIRECTORY_SEPARATOR)
 			{
 				// Directory
 				$dir .= DIRECTORY_SEPARATOR;

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/module-install.dtd">
+<extension type="module" version="3.0" client="site" method="upgrade">
+    <name>RealEstateManager Search Free</name>
+    <author>Andrey Kvasnevskiy</author>
+    <creationDate>Updated on June 2013</creationDate>
+    <authorEmail>akbet@ordasoft.com</authorEmail>
+    <copyright>(C) 2012 OrdaSoft </copyright>
+    <authorUrl>http://www.ordasoft.com</authorUrl>
+    <version>3.1 Free</version>
+    <description>
+        Search Pro module for RealEstate Manager component.
+    </description>
+    <files>
+        <filename module="mod_realestatemanagersearch_j3">mod_realestatemanagersearch_j3.php</filename>
+        <filename>mod_realestatemanagersearch_j3.xml</filename>
+        <filename>index.html</filename>
+        <folder>tmpl</folder> 
+    </files>
+
+    <!--JOOMLA 2.5.3-->
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field name="rent" type="list" extension="com_realestatemanager" default="0" label="Display Calendar" description="Show or hide search for field 'Calendar' in the RealEstateManager">
+                    <option value="0">Show</option>
+                    <option value="1">Hide</option>
+                </field>
+
+                <field name="price" type="list" extension="com_realestatemanager" default="0" label="Display Price Range" description="Show or hide search for field 'Price' in the RealEstateManager">
+                    <option value="0">Show</option>
+                    <option value="1">Hide</option>
+                </field>
+
+                <field name="listing_status_list" type="list" extension="com_realestatemanager" default="0" label="Display Listing Status" description="Show and/or search or no for field 'Listing status' in the RealEstateManager">
+                    <option value="0">View Search</option>
+                    <option value="1">Search</option>
+                    <option value="2">None</option>
+                </field>
+
+                <field name="listing_type_list" type="list" extension="com_realestatemanager" default="0" label="Display Listing Type" description="Show and/or search or no for field 'Listingy type' in the RealEstateManager">
+                    <option value="0">View Search</option>
+                    <option value="1">Search</option>
+                    <option value="2">None</option>
+                </field>
+                
+               <field
+                    name="layout"
+                    type="modulelayout"
+                    label="JFIELD_ALT_LAYOUT_LABEL"
+                    description="JFIELD_ALT_MODULE_LAYOUT_DESC">
+        
+                </field>
+            </fieldset>
+
+            <fieldset name="advanced">
+                <field name="moduleclass_sfx" type="text" extension="com_realestatemanager" default="" label="Custom class name" description="Name of css class contains the module (table.moduletable), to allow individual module styling" /> 
+                <field name="ItemId" type="text" extension="com_realestatemanager" multiple="false" size="3" default="" label="ItemId" description="Enter Id for Menu Item com_realestatemanager" />
+            </fieldset>
+        </fields>
+    </config>
+</extension>

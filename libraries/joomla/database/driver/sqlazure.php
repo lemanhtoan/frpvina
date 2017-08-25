@@ -12,7 +12,7 @@ defined('JPATH_PLATFORM') or die;
 /**
  * SQL Server database driver
  *
- * @link   https://azure.microsoft.com/en-us/documentation/services/sql-database/
+ * @see    https://azure.microsoft.com/en-us/documentation/services/sql-database/
  * @since  12.1
  */
 class JDatabaseDriverSqlazure extends JDatabaseDriverSqlsrv

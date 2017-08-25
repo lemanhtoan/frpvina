@@ -9,8 +9,6 @@
 
 defined('JPATH_PLATFORM') or die;
 
-use Joomla\Registry\Registry;
-
 /**
  * Helper for standard content style extensions.
  * This class mainly simplifies static helper methods often repeated in individual components
@@ -95,7 +93,7 @@ class JHelperContent
 	public static function getActions($component = '', $section = '', $id = 0)
 	{
 		// Check for deprecated arguments order
-		if (is_int($component) || $component === null)
+		if (is_int($component) || is_null($component))
 		{
 			$result = self::_getActions($component, $section, $id);
 
@@ -147,22 +145,7 @@ class JHelperContent
 	public static function getCurrentLanguage($detectBrowser = true)
 	{
 		$app = JFactory::getApplication();
-
-		// Get the languagefilter parameters
-		if (JLanguageMultilang::isEnabled())
-		{
-			$plugin       = JPluginHelper::getPlugin('system', 'languagefilter');
-			$pluginParams = new Registry($plugin->params);
-
-			if ((int) $pluginParams->get('lang_cookie', 1) === 1)
-			{
-				$langCode = $app->input->cookie->getString(JApplicationHelper::getHash('language'));
-			}
-			else
-			{
-				$langCode = JFactory::getSession()->get('plg_system_languagefilter.language');
-			}
-		}
+		$langCode = $app->input->cookie->getString(JApplicationHelper::getHash('language'));
 
 		// No cookie - let's try to detect browser language or use site default
 		if (!$langCode)

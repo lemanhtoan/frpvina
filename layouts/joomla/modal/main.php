@@ -9,8 +9,6 @@
 
 defined('JPATH_BASE') or die;
 
-use Joomla\Utilities\ArrayHelper;
-
 // Load bootstrap-tooltip-extended plugin for additional tooltip positions in modal
 JHtml::_('bootstrap.tooltipExtended');
 
@@ -152,21 +150,21 @@ $script[] = "});";
 
 JFactory::getDocument()->addScriptDeclaration(implode("\n", $script));
 ?>
-<div id="<?php echo $selector; ?>" <?php echo ArrayHelper::toString($modalAttributes); ?>>
+<div id="<?php echo $selector; ?>" <?php echo JArrayHelper::toString($modalAttributes); ?>>
 	<?php
-	// Header
-	if (!isset($params['closeButton']) || isset($params['title']) || $params['closeButton'])
-	{
-		echo JLayoutHelper::render('joomla.modal.header', $displayData);
-	}
+		// Header
+		if (!isset($params['closeButton']) || isset($params['title']) || $params['closeButton'])
+		{
+			echo JLayoutHelper::render('joomla.modal.header', $displayData);
+		}
 
-	// Body
-	echo JLayoutHelper::render('joomla.modal.body', $displayData);
+		// Body
+		echo JLayoutHelper::render('joomla.modal.body', $displayData);
 
-	// Footer
-	if (isset($params['footer']))
-	{
-		echo JLayoutHelper::render('joomla.modal.footer', $displayData);
-	}
+		// Footer
+		if (isset($params['footer']))
+		{
+			echo JLayoutHelper::render('joomla.modal.footer', $displayData);
+		}
 	?>
 </div>

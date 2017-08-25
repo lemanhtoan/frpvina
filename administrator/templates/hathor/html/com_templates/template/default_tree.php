@@ -19,11 +19,9 @@ ksort($this->files, SORT_STRING);
 			$fileArray = explode('/', $this->fileName);
 			$count     = 0;
 
-			$keyArrayCount = count($keyArray);
-
-			if (count($fileArray) >= $keyArrayCount)
+			if (count($fileArray) >= count($keyArray))
 			{
-				for ($i = 0; $i < $keyArrayCount; $i++)
+				for ($i = 0; $i < count($keyArray); $i++)
 				{
 					if ($keyArray[$i] === $fileArray[$i])
 					{
@@ -31,7 +29,7 @@ ksort($this->files, SORT_STRING);
 					}
 				}
 
-				if ($count === $keyArrayCount)
+				if ($count == count($keyArray))
 				{
 					$class = 'folder show';
 				}

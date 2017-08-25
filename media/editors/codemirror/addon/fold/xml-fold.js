@@ -163,10 +163,10 @@
     }
   };
 
-  CodeMirror.findEnclosingTag = function(cm, pos, range, tag) {
+  CodeMirror.findEnclosingTag = function(cm, pos, range) {
     var iter = new Iter(cm, pos.line, pos.ch, range);
     for (;;) {
-      var open = findMatchingOpen(iter, tag);
+      var open = findMatchingOpen(iter);
       if (!open) break;
       var forward = new Iter(cm, pos.line, pos.ch, range);
       var close = findMatchingClose(forward, open.tag);

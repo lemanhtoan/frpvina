@@ -93,12 +93,9 @@ class NewsfeedsModelCategory extends JModelList
 				$params->loadString($item->params);
 			}
 
-			// Some contexts may not use tags data at all, so we allow callers to disable loading tag data
-			if ($this->getState('load_tags', true))
-			{
-				$item->tags = new JHelperTags;
-				$item->tags->getItemTags('com_newsfeeds.newsfeed', $item->id);
-			}
+			// Get the tags
+			$item->tags = new JHelperTags;
+			$item->tags->getItemTags('com_newsfeeds.newsfeed', $item->id);
 		}
 
 		return $items;

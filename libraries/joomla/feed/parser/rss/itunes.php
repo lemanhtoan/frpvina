@@ -12,7 +12,7 @@ defined('JPATH_PLATFORM') or die;
 /**
  * RSS Feed Parser Namespace handler for iTunes.
  *
- * @link   https://itunespartner.apple.com/en/podcasts/overview
+ * @see    https://itunespartner.apple.com/en/podcasts/overview
  * @since  12.3
  */
 class JFeedParserRssItunes implements JFeedParserNamespace

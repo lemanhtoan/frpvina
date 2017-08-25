@@ -4,7 +4,7 @@
  * @subpackage  Version
  *
  * @copyright   Copyright (C) 2005 - 2017 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -38,7 +38,7 @@ final class JVersion
 	 * @var    string
 	 * @since  3.5
 	 */
-	const DEV_LEVEL = '5';
+	const DEV_LEVEL = '0';
 
 	/**
 	 * Development status.
@@ -70,7 +70,7 @@ final class JVersion
 	 * @var    string
 	 * @since  3.5
 	 */
-	const RELDATE = '14-August-2017';
+	const RELDATE = '25-April-2017';
 
 	/**
 	 * Release time.
@@ -78,7 +78,7 @@ final class JVersion
 	 * @var    string
 	 * @since  3.5
 	 */
-	const RELTIME = '12:09';
+	const RELTIME = '15:36';
 
 	/**
 	 * Release timezone.
@@ -143,7 +143,7 @@ final class JVersion
 	 */
 	public function isInDevelopmentState()
 	{
-		return strtolower(self::DEV_STATUS) !== 'stable';
+		return strtolower(self::DEV_STATUS) != 'stable';
 	}
 
 	/**
@@ -153,7 +153,7 @@ final class JVersion
 	 *
 	 * @return  boolean True if the version is compatible.
 	 *
-	 * @link    https://secure.php.net/version_compare
+	 * @see     https://secure.php.net/version_compare
 	 * @since   1.0
 	 */
 	public function isCompatible($minimum)

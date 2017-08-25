@@ -153,14 +153,13 @@ class JGithubPackageRepositoriesStatistics  extends JGithubPackage
 	 *
 	 * @param   JHttpResponse  $response      The response.
 	 * @param   integer        $expectedCode  The expected "good" code.
-	 * @param   boolean        $decode        If the should be response be JSON decoded.
 	 *
 	 * @return  mixed
 	 *
 	 * @since   1.0
 	 * @throws  \DomainException
 	 */
-	protected function processResponse(JHttpResponse $response, $expectedCode = 200, $decode = true)
+	protected function processResponse(JHttpResponse $response, $expectedCode = 200)
 	{
 		if (202 == $response->code)
 		{
@@ -170,6 +169,6 @@ class JGithubPackageRepositoriesStatistics  extends JGithubPackage
 			);
 		}
 
-		return parent::processResponse($response, $expectedCode, $decode);
+		return parent::processResponse($response, $expectedCode);
 	}
 }

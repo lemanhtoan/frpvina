@@ -55,8 +55,7 @@ class ContentModelFeatured extends ContentModelArticles
 				'author_id',
 				'category_id',
 				'level',
-				'tag',
-				'rating_count', 'rating',
+				'tag'
 			);
 		}
 
@@ -221,8 +220,14 @@ class ContentModelFeatured extends ContentModelArticles
 		}
 
 		// Add the list ordering clause.
-		$orderCol  = $this->state->get('list.ordering', 'a.title');
-		$orderDirn = $this->state->get('list.direction', 'ASC');
+		$orderCol  = $this->state->get('list.fullordering', 'a.title');
+		$orderDirn = '';
+
+		if (empty($orderCol))
+		{
+			$orderCol  = $this->state->get('list.ordering', 'a.title');
+			$orderDirn = $this->state->get('list.direction', 'ASC');
+		}
 
 		$query->order($db->escape($orderCol) . ' ' . $db->escape($orderDirn));
 

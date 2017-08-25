@@ -40,7 +40,6 @@ class ContentModelArticles extends JModelList
 				'state', 'a.state',
 				'access', 'a.access', 'access_level',
 				'created', 'a.created',
-				'modified', 'a.modified',
 				'created_by', 'a.created_by',
 				'created_by_alias', 'a.created_by_alias',
 				'ordering', 'a.ordering',
@@ -53,8 +52,7 @@ class ContentModelArticles extends JModelList
 				'author_id',
 				'category_id',
 				'level',
-				'tag',
-				'rating_count', 'rating',
+				'tag'
 			);
 
 			if (JLanguageAssociations::isEnabled())
@@ -176,7 +174,7 @@ class ContentModelArticles extends JModelList
 			$this->getState(
 				'list.select',
 				'a.id, a.title, a.alias, a.checked_out, a.checked_out_time, a.catid' .
-					', a.state, a.access, a.created, a.created_by, a.created_by_alias, a.modified, a.ordering, a.featured, a.language, a.hits' .
+					', a.state, a.access, a.created, a.created_by, a.created_by_alias, a.ordering, a.featured, a.language, a.hits' .
 					', a.publish_up, a.publish_down'
 			)
 		);
@@ -324,8 +322,14 @@ class ContentModelArticles extends JModelList
 		}
 
 		// Add the list ordering clause.
-		$orderCol  = $this->state->get('list.ordering', 'a.id');
-		$orderDirn = $this->state->get('list.direction', 'DESC');
+		$orderCol  = $this->state->get('list.fullordering', 'a.id');
+		$orderDirn = '';
+
+		if (empty($orderCol))
+		{
+			$orderCol  = $this->state->get('list.ordering', 'a.id');
+			$orderDirn = $this->state->get('list.direction', 'DESC');
+		}
 
 		$query->order($db->escape($orderCol) . ' ' . $db->escape($orderDirn));
 
@@ -375,7 +379,7 @@ class ContentModelArticles extends JModelList
 		{
 			$groups = JFactory::getUser()->getAuthorisedViewLevels();
 
-			foreach (array_keys($items) as $x)
+			for ($x = 0, $count = count($items); $x < $count; $x++)
 			{
 				// Check the access level. Remove articles the user shouldn't see
 				if (!in_array($items[$x]->access, $groups))

@@ -56,7 +56,7 @@ $attributes = array(
 	$columns ?: '',
 	$rows ?: '',
 	!empty($class) ? 'class="' . $class . '"' : '',
-	strlen($hint) ? 'placeholder="' . htmlspecialchars($hint, ENT_COMPAT, 'UTF-8') . '"' : '',
+	strlen($hint) ? 'placeholder="' . $hint . '"' : '',
 	$disabled ? 'disabled' : '',
 	$readonly ? 'readonly' : '',
 	$onchange ? 'onchange="' . $onchange . '"' : '',

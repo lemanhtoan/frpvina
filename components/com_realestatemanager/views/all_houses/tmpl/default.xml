@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+    <layout title="All Houses">
+        <message><![CDATA[Displays a selected category of a application (DEFAULT)]]></message>
+    </layout>
+
+    <fields name="params">
+        <fieldset name="params" addfieldpath="/administrator/components/com_realestatemanager/elements" label="Params">
+          <field name="allhouselayout" type="allhouselayout" default="" class="inputbox" label="Select layout" multiple ="false" size="1" description="Choose a layout" required="false" />
+	  <field name="viewhouselayout" type="viewhouselayout" default="" class="inputbox" label="Select layout house" multiple ="false" size="1" description="Choose a layout house" required="false" />
+	  <field name="back_button" type="list" label="Back Button" required="false" description="Show/Hide a Back Button" >
+                <option value="">Use Global</option>
+                <option value="0">Hide</option>
+                <option value="1">Show</option>
+            </field>            
+        </fieldset>
+    </fields>
+</metadata>

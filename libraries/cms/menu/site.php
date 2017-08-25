@@ -168,7 +168,8 @@ class JMenuSite extends JMenu
 			}
 			elseif ($values[$key] === null)
 			{
-				unset($attributes[$key], $values[$key]);
+				unset($attributes[$key]);
+				unset($values[$key]);
 			}
 
 			// Filter by access level if not set
@@ -179,7 +180,8 @@ class JMenuSite extends JMenu
 			}
 			elseif ($values[$key] === null)
 			{
-				unset($attributes[$key], $values[$key]);
+				unset($attributes[$key]);
+				unset($values[$key]);
 			}
 		}
 

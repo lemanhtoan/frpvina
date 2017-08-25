@@ -51,10 +51,7 @@ class ContactController extends JControllerLegacy
 	 */
 	public function display($cachable = false, $urlparams = array())
 	{
-		if (JFactory::getApplication()->getUserState('com_contact.contact.data') === null)
-		{
-			$cachable = true;
-		}
+		$cachable = true;
 
 		// Set the default view name and format from the Request.
 		$vName = $this->input->get('view', 'categories');

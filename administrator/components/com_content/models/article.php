@@ -208,7 +208,7 @@ class ContentModelArticle extends JModelAdmin
 		}
 
 		// Default to component settings if neither article nor category known.
-		return parent::canEditState($record);
+		return parent::canEditState();
 	}
 
 	/**
@@ -414,7 +414,7 @@ class ContentModelArticle extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$app  = JFactory::getApplication();
+		$app = JFactory::getApplication();
 		$data = $app->getUserState('com_content.edit.article.data', array());
 
 		if (empty($data))
@@ -467,19 +467,17 @@ class ContentModelArticle extends JModelAdmin
 	public function validate($form, $data, $group = null)
 	{
 		// Don't allow to change the users if not allowed to access com_users.
-		if (JFactory::getApplication()->isClient('administrator') && !JFactory::getUser()->authorise('core.manage', 'com_users'))
+		if (($data['created_by'] || $data['modified_by']) && !JFactory::getUser()->authorise('core.manage', 'com_users'))
 		{
 			if (isset($data['created_by']))
 			{
 				unset($data['created_by']);
 			}
-
 			if (isset($data['modified_by']))
 			{
 				unset($data['modified_by']);
 			}
 		}
-
 		return parent::validate($form, $data, $group);
 	}
 

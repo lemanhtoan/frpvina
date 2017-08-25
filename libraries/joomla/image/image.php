@@ -971,7 +971,7 @@ class JImage
 	 *
 	 * @return  boolean
 	 *
-	 * @link    https://secure.php.net/manual/image.constants.php
+	 * @see     https://secure.php.net/manual/image.constants.php
 	 * @since   11.3
 	 * @throws  LogicException
 	 */

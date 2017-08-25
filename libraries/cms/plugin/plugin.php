@@ -4,7 +4,7 @@
  * @subpackage  Plugin
  *
  * @copyright   Copyright (C) 2005 - 2017 Open Source Matters, Inc. All rights reserved.
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ * @license     GNU General Public License version 2 or later; see LICENSE
  */
 
 defined('JPATH_PLATFORM') or die;
@@ -96,8 +96,9 @@ abstract class JPlugin extends JEvent
 		if (property_exists($this, 'app'))
 		{
 			$reflection = new ReflectionClass($this);
+			$appProperty = $reflection->getProperty('app');
 
-			if ($reflection->getProperty('app')->isPrivate() === false && $this->app === null)
+			if ($appProperty->isPrivate() === false && is_null($this->app))
 			{
 				$this->app = JFactory::getApplication();
 			}
@@ -106,8 +107,9 @@ abstract class JPlugin extends JEvent
 		if (property_exists($this, 'db'))
 		{
 			$reflection = new ReflectionClass($this);
+			$dbProperty = $reflection->getProperty('db');
 
-			if ($reflection->getProperty('db')->isPrivate() === false && $this->db === null)
+			if ($dbProperty->isPrivate() === false && is_null($this->db))
 			{
 				$this->db = JFactory::getDbo();
 			}

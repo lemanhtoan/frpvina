@@ -154,10 +154,18 @@ class OutputFilter
 	 * @return  string  Processed string.
 	 *
 	 * @since   1.0
+	 * @todo    There must be a better way???
 	 */
 	public static function ampReplace($text)
 	{
-		return preg_replace('/(?<!&)&(?!&|#|[\w]+;)/', '&amp;', $text);
+		$text = str_replace('&&', '*--*', $text);
+		$text = str_replace('&#', '*-*', $text);
+		$text = str_replace('&amp;', '&', $text);
+		$text = preg_replace('|&(?![\w]+;)|', '&amp;', $text);
+		$text = str_replace('*-*', '&#', $text);
+		$text = str_replace('*--*', '&&', $text);
+
+		return $text;
 	}
 
 	/**

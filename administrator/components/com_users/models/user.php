@@ -112,13 +112,8 @@ class UsersModelUser extends JModelAdmin
 	 */
 	public function getForm($data = array(), $loadData = true)
 	{
-		$pluginParams = new Registry;
-		
-		if (JPluginHelper::isEnabled('user', 'joomla'))
-		{
-			$plugin = JPluginHelper::getPlugin('user', 'joomla');
-			$pluginParams->loadString($plugin->params);
-		}
+		$plugin = JPluginHelper::getPlugin('user', 'joomla');
+		$pluginParams = new Registry($plugin->params);
 
 		// Get the form.
 		$form = $this->loadForm('com_users.user', 'user', array('control' => 'jform', 'load_data' => $loadData));
@@ -131,7 +126,7 @@ class UsersModelUser extends JModelAdmin
 		// Passwords fields are required when mail to user is set to No in joomla user plugin
 		$userId = $form->getValue('id');
 
-		if ($userId === 0 && $pluginParams->get('mail_to_user', '0') === '0')
+		if ($userId === 0 && $pluginParams->get('mail_to_user') === '0')
 		{
 			$form->setFieldAttribute('password', 'required', 'true');
 			$form->setFieldAttribute('password2', 'required', 'true');
@@ -248,7 +243,7 @@ class UsersModelUser extends JModelAdmin
 
 			foreach ($myNewGroups as $group)
 			{
-				$stillSuperAdmin = $stillSuperAdmin ?: JAccess::checkGroup($group, 'core.admin');
+				$stillSuperAdmin = ($stillSuperAdmin) ? ($stillSuperAdmin) : JAccess::checkGroup($group, 'core.admin');
 			}
 
 			if (!$stillSuperAdmin)
