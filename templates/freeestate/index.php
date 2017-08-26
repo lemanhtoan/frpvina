@@ -201,14 +201,14 @@ h6 {font-family:"<?php echo $this->params->get('h6_font', 'PT Sans Narrow')?>";}
 		    	<?php if ($left): ?>
 					      <div class="sidebar-left col-lg-3 col-md-3 col-sm-3 col-xs-12"><jdoc:include type="modules" name="SidebarLeft" style="xhtml" /></div>
 				<?php endif; ?>
-
+				<?php if (JRequest::getVar('view') !='featured') :?>
 					<div id="contentBox" class="<?php if ($left && $right) {print('col-lg-6 col-md-6 col-sm-6 col-xs-12');} else if ($left || $right) {print('col-lg-6 col-md-6 col-sm-6 col-xs-12');} else {print('col-lg-9 col-md-9 col-sm-9 col-xs-12');} ?>">
 						<jdoc:include type="modules" name="location_map" style="xhtml" />
 						<div><jdoc:include type="message" /></div>
 						<div><jdoc:include type="component" /></div>
 
 					</div>
-
+				<?php endif;?>
 				<?php if ($right): ?>
 					<div class="sidebar-right col-lg-3 col-md-3 col-sm-3 col-xs-12">
 						<jdoc:include type="modules" name="SidebarRight" style="xhtml" />
@@ -341,16 +341,6 @@ h6 {font-family:"<?php echo $this->params->get('h6_font', 'PT Sans Narrow')?>";}
 
 				<div class="content_footer row">
 
-					<div class="soc_icons_box col-lg-12 col-md-12 col-sm-12 col-xs-12">
-						<ul class="soc_icons" >
-							<?php foreach($soc as $key => $value) {
-								if ($value != null) { ?>
-									<li>
-										<a href="<?php echo $value ?>" class="fa <?php echo $key ?>" target="_blank" rel="nofollow"></a>
-									</li>
-							<?php } } ?>
-						</ul>
-					</div>
 					<div class="copyrights col-lg-12 col-md-12 col-sm-12 col-xs-12">
 						<?php echo $copyrights; ?>
 					</div>
