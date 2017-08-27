@@ -106,11 +106,7 @@ $tableClass = $this->params->get('show_headings') != 1 ? ' table-noheader' : '';
 						<?php endif; ?>
 					</th>
 				<?php endif; ?>
-				<?php if ($this->params->get('list_show_author')) : ?>
-					<th scope="col" id="categorylist_header_author">
-						<?php echo JHtml::_('grid.sort', 'JAUTHOR', 'author', $listDirn, $listOrder); ?>
-					</th>
-				<?php endif; ?>
+
 				<?php if ($this->params->get('list_show_hits')) : ?>
 					<th scope="col" id="categorylist_header_hits">
 						<?php echo JHtml::_('grid.sort', 'JGLOBAL_HITS', 'a.hits', $listDirn, $listOrder); ?>
@@ -205,19 +201,7 @@ $tableClass = $this->params->get('show_headings') != 1 ? ' table-noheader' : '';
 					); ?>
 				</td>
 			<?php endif; ?>
-			<?php if ($this->params->get('list_show_author', 1)) : ?>
-				<td headers="categorylist_header_author" class="list-author">
-					<?php if (!empty($article->author) || !empty($article->created_by_alias)) : ?>
-						<?php $author = $article->author ?>
-						<?php $author = $article->created_by_alias ?: $author; ?>
-						<?php if (!empty($article->contact_link) && $this->params->get('link_author') == true) : ?>
-							<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', JHtml::_('link', $article->contact_link, $author)); ?>
-						<?php else : ?>
-							<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', $author); ?>
-						<?php endif; ?>
-					<?php endif; ?>
-				</td>
-			<?php endif; ?>
+
 			<?php if ($this->params->get('list_show_hits', 1)) : ?>
 				<td headers="categorylist_header_hits" class="list-hits">
 							<span class="badge badge-info">
@@ -257,7 +241,7 @@ $tableClass = $this->params->get('show_headings') != 1 ? ' table-noheader' : '';
 	<?php echo JHtml::_('icon.create', $this->category, $this->category->params); ?>
 <?php endif; ?>
 
-<?php // Add pagination links ?>
+<!-- <?php // Add pagination links ?>
 <?php if (!empty($this->items)) : ?>
 	<?php if (($this->params->def('show_pagination', 2) == 1  || ($this->params->get('show_pagination') == 2)) && ($this->pagination->pagesTotal > 1)) : ?>
 		<div class="pagination">
@@ -271,5 +255,5 @@ $tableClass = $this->params->get('show_headings') != 1 ? ' table-noheader' : '';
 			<?php echo $this->pagination->getPagesLinks(); ?>
 		</div>
 	<?php endif; ?>
-<?php endif; ?>
+<?php endif; ?> -->
 </form>

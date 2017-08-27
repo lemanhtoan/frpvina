@@ -37,6 +37,10 @@ $doc->addStyleSheet($this->baseurl."/templates/".$this->template."/css/rstyle.cs
 $doc->addScript($this->baseurl."/templates/".$this->template."/bootstrap/js/bootstrap.js");
 $doc->addScript($this->baseurl."/templates/".$this->template."/javascript/custom.js");
 
+// add fancybox
+$doc->addStyleSheet("http://fancyapps.com/fancybox/source/jquery.fancybox.css");
+$doc->addScript("http://fancyapps.com/fancybox/source/jquery.fancybox.js");
+
 
 //if(version_compare(JVERSION,"3.0.0","ge")){
  //  JHtml::_('bootstrap.framework');
@@ -186,7 +190,7 @@ h6 {font-family:"<?php echo $this->params->get('h6_font', 'PT Sans Narrow')?>";}
 							</div>
 						</nav><!-- #site-navigation -->
 			    	</div>
-			    	<div class="sidebar-left-content" style="padding: 30px 25px;">
+			    	<div class="sidebar-left-content">
                     	<jdoc:include type="modules" name="position-2" style="xhtml" />
                     </div>
 					<?php endif; ?>
@@ -201,6 +205,7 @@ h6 {font-family:"<?php echo $this->params->get('h6_font', 'PT Sans Narrow')?>";}
 		    	<?php if ($left): ?>
 					      <div class="sidebar-left col-lg-3 col-md-3 col-sm-3 col-xs-12"><jdoc:include type="modules" name="SidebarLeft" style="xhtml" /></div>
 				<?php endif; ?>
+
 				<?php if (JRequest::getVar('view') !='featured') :?>
 					<div id="contentBox" class="<?php if ($left && $right) {print('col-lg-6 col-md-6 col-sm-6 col-xs-12');} else if ($left || $right) {print('col-lg-6 col-md-6 col-sm-6 col-xs-12');} else {print('col-lg-9 col-md-9 col-sm-9 col-xs-12');} ?>">
 						<jdoc:include type="modules" name="location_map" style="xhtml" />
@@ -362,6 +367,34 @@ h6 {font-family:"<?php echo $this->params->get('h6_font', 'PT Sans Narrow')?>";}
 					</div>
 				<?php endif; ?>
 		    </div>
+
 		</div> <!--id footer-->
+		<script type="text/javascript">
+			jQuery(".fancybox").fancybox();
+			jQuery(document).ready(function(){
+				jQuery(".cate-main").click(function() { 
+				  jQuery(".list-cate").slideToggle();
+				});
+			});
+		</script>
+
+		<?php $alias = &JFactory::getURI()->getPath();?>
+		<?php if (strpos($alias, 'san-pham') !== false) { ?>
+
+			<div class="box-auto">
+				<button class="cate-main">Danh mục sản phẩm</button>
+				<ul class="list-cate">
+					<li><a href="#cate-1">Các Sản Phẩm Bồn Bể</a></li>
+					<li><a href="#cate-2">Sản Phẩm Ống</a></li>
+					<li><a href="#cate-3">Bàn Ghế ,Đồ Trang Trí</a></li>
+					<li><a href="#cate-4">Nhà Vệ Sinh Công Cộng</a></li>
+					<li><a href="#cate-5">Sản Phẩm Tôn Lấy Sáng</a></li>
+					<li><a href="#cate-6">Sản Phẩm Tủ Điện, Hộp Đồng Hồ Nước</a></li>
+					<li><a href="#cate-7">Linh Kiện, Phụ Kiện Cho Các Sản Phẩm Công  Nghiệp Và Dân Dụng</a></li>
+					<li><a href="#cate-8">Sản Phẩm Nắp Hố Ga, Song Chắn Rác, Thùng Rác Công Cộng</a></li>
+				</ul>
+			</div>
+		<?php } ?>
+		
 	</body>
 </html>

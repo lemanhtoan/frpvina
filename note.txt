@@ -1,0 +1,6 @@
+admin: admin/123456a@
+
+Database:	frpvinac_frpvina
+Host:	localhost
+Username:	frpvinac_frpvina
+Password:	123456a@
