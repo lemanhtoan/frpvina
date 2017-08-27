@@ -38,8 +38,8 @@ $doc->addScript($this->baseurl."/templates/".$this->template."/bootstrap/js/boot
 $doc->addScript($this->baseurl."/templates/".$this->template."/javascript/custom.js");
 
 // add fancybox
-$doc->addStyleSheet("http://fancyapps.com/fancybox/source/jquery.fancybox.css");
-$doc->addScript("http://fancyapps.com/fancybox/source/jquery.fancybox.js");
+$doc->addStyleSheet($this->baseurl."/templates/".$this->template."/css/jquery.fancybox.css");
+$doc->addScript($this->baseurl."/templates/".$this->template."/css/jquery.fancybox.js");
 
 
 //if(version_compare(JVERSION,"3.0.0","ge")){

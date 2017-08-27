@@ -1,3 +1,9 @@
+a.fancybox {
+  color: #484848;
+}
+a.fancybox:hover {
+  color: #484848;
+}
 .content-category table {
     border-collapse: collapse;
     width: 100%;
