@@ -381,17 +381,18 @@ h6 {font-family:"<?php echo $this->params->get('h6_font', 'PT Sans Narrow')?>";}
 		<?php $alias = &JFactory::getURI()->getPath();?>
 		<?php if (strpos($alias, 'san-pham') !== false) { ?>
 
-			<div class="box-auto">
+			<div class="box-auto" style="text-transform: uppercase;">
 				<button class="cate-main">Danh mục sản phẩm</button>
 				<ul class="list-cate">
-					<li><a href="#cate-1">Các Sản Phẩm Bồn Bể</a></li>
-					<li><a href="#cate-2">Sản Phẩm Ống</a></li>
-					<li><a href="#cate-3">Bàn Ghế ,Đồ Trang Trí</a></li>
+					<li><a href="#cate-1">ỐNG VÀ PHỤ KIỆN CỐT SỢI THỦY TINH</a></li>
+					<li><a href="#cate-2">BỒN BỂ CỐT SỢI THỦY TINH</a></li>
+					<li><a href="#cate-3">Bàn Ghế, Đồ Trang Trí</a></li>
 					<li><a href="#cate-4">Nhà Vệ Sinh Công Cộng</a></li>
 					<li><a href="#cate-5">Sản Phẩm Tôn Lấy Sáng</a></li>
 					<li><a href="#cate-6">Sản Phẩm Tủ Điện, Hộp Đồng Hồ Nước</a></li>
 					<li><a href="#cate-7">Linh Kiện, Phụ Kiện Cho Các Sản Phẩm Công  Nghiệp Và Dân Dụng</a></li>
 					<li><a href="#cate-8">Sản Phẩm Nắp Hố Ga, Song Chắn Rác, Thùng Rác Công Cộng</a></li>
+					<li><a href="#cate-9">Hệ Thống Lọc Khí, Hút Mùi Nhà Xưởng</a></li>
 				</ul>
 			</div>
 		<?php } ?>

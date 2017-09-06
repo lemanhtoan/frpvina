@@ -14,7 +14,7 @@ class JConfig {
 	public $dbtype = 'mysqli';
 	public $host = 'localhost';
 	public $user = 'root';
-	public $password = '123456a@';
+	public $password = ''; //123456a@
 	public $db = 'vina';
 	public $dbprefix = 'vina_';
 	public $live_site = '';
