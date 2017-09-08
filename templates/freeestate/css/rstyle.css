@@ -1,3 +1,49 @@
+#owl-products img {
+	padding: 5px;
+}
+#owl-products .owl-prev {
+    position: absolute;
+    top: 50%;
+    left: -35px;
+    background: #4e02af;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+}
+
+#owl-products .owl-next {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+        background: #4e02af;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 8px 0px 8px 10px;
+}
+
+#owl-products .owl-buttons i {
+    font-size: 26px;
+    color: #fff;
+}
+.service_box {
+    padding: 3px;
+    border: 1px solid #dedede;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.service_box h2 {
+    text-align: center;
+    margin: 8px;
+    line-height: 18px;
+    min-height: 40px;
+}
+.fancybox-title-float-wrap .child {
+    background: #4e02af !important;
+    text-transform: uppercase;
+}
 ul.list-cate a {
     font-size: 14px;
 }
@@ -366,7 +412,7 @@ a:focus, a:active {
 }
 .main_menu ul.menu li a {
   font-size:15px;
-  margin:0 10px;
+  margin:0 0 0 15px;
   padding:15px;
   background-color:transparent;
   border-bottom:0px;
@@ -551,7 +597,7 @@ a:focus, a:active {
 .main_menu ul.menu li.parent ul li a {
   font-size:13px;
   float:left;
-  padding:7px 10px 7px 0;
+  padding:15px 10px 15px 0;
   margin:0 15px 0 0;
   text-indent:10px;
   width:100%;
@@ -582,7 +628,7 @@ a:focus, a:active {
 }
 .main_menu ul.menu li.parent ul li a span.arrow {
   right:6px;
-  top:14px;
+  top:20px;
   position:absolute;
   width:0;
   height:0;
@@ -633,7 +679,7 @@ a:focus, a:active {
 .main_menu ul.menu li.parent ul li ul.nav-child li a {
   font-size:13px;
   float:left;
-  padding:7px 0px 7px 0;
+  padding:15px 0px 15px 0;
   margin:0 0px 0 0;
   text-indent:10px;
   width:100%;
@@ -1679,26 +1725,17 @@ div.col_rent {
   background:#0061CC;
 }
 .service_textblock h2 {
-  text-transform:capitalize;
-  font-weight:normal;
   font-size:30px;
   color:#000000;
-  line-height:30px;
-  font-style:italic;
-  margin-bottom:20px;
-}
-.service_textblock .service_box h2 {
   text-transform:capitalize;
-  font-weight:normal;
-  font-size:14px;
-  color:#000000;
-  line-height:16x;
-  font-style:italic;
-  margin-bottom:20px;
+  font-size: 14px;
+}
+.lager-row .service_box img {
+    height: auto !important;
 }
 .service_textblock .service_box img {
   width:100%;
-  height:380px;
+  height:220px;
 }
 .manager_content {
   margin-bottom:30px;

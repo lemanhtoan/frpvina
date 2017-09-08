@@ -70,6 +70,10 @@ $doc->addScript($this->baseurl."/templates/".$this->template."/css/jquery.fancyb
 <!--[if IE 7]> <link type="text/css" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/css/style_ie7.css" /> <![endif]-->
 <!--[if IE 8]> <link type="text/css" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/css/style_ie8.css" /> <![endif]-->
 <!--[if IE 9]> <link type="text/css" rel="stylesheet" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/css/style_ie9.css" /> <![endif]-->
+
+<script type="text/javascript" src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/owl/owl.carousel.js"></script>
+<link href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/owl/owl.carousel.css" rel="stylesheet">
+
 </head>
 <style type="text/css">
 body {
@@ -199,8 +203,89 @@ h6 {font-family:"<?php echo $this->params->get('h6_font', 'PT Sans Narrow')?>";}
 					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
 					    <jdoc:include type="modules" name="Slideshow" style="xhtml" />
 					    <jdoc:include type="modules" name="position-1" style="xhtml" />
+
+					    <div class="main-owl">
+					    	<div id="owl-products" class="owl-carousel">
+				                <div class="item">
+				                  <img src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/slider/i1.jpg" alt="Bồn cây cảnh composite">
+				                </div>
+
+				                <div class="item">
+				                  <img src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/slider/i2.jpg" alt="BỤC GIẢNG COMPOSITE">
+				                </div>
+
+				                <div class="item">
+				                  <img src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/slider/i3.jpg" alt="Hệ Thống lọc khí">
+				                </div>
+
+				                <div class="item">
+				                  <img src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/slider/i4.jpg" alt="Hộp đồng hồ 04 công tơ 01 pha">
+				                </div>
+
+				                <div class="item">
+				                  <img src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/slider/i5.jpg" alt="Hộp cứu hỏa composite 02">
+				                </div>
+
+				                <div class="item">
+				                  <img src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/slider/i6.jpg" alt="Nhà vệ sinh di động đơn 02">
+				                </div>
+
+				                <div class="item">
+				                  <img src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/slider/i7.jpg" alt="Tôn lấy sáng composite">
+				                </div>
+
+				                <div class="item">
+				                  <img src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/slider/i8.jpg" alt="TỦ ĐIỆN">
+				                </div>
+
+				                <div class="item">
+				                  <img src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/slider/i9.jpg" alt="Tủ đồng hồ 08 công tơ 1 pha">
+				                </div>
+
+				                <div class="item">
+				                  <img src="<?php echo $this->baseurl ?>/templates/<?php echo $this->template; ?>/slider/i10.jpg" alt="Tủ đồng hồ nước">
+				                </div>
+			                </div>
+					    </div>
 					</div>
+
+					<script>
+						jQuery("#owl-products").owlCarousel({
+						    items : 5,
+						    itemsDesktop : [1199,5],
+						    itemsDesktopSmall : [980,5],
+						    itemsTablet: [768,2],
+						    itemsMobile : [479,1],
+						    pagination: false,
+						    slideSpeed : 200,
+						    paginationSpeed : 800,
+						    rewindSpeed : 1000,
+						    autoPlay : true,
+						    stopOnHover : false,
+						    // Navigation
+						    navigation : true,
+						    navigationText: [
+						        "<i class='fa fa-chevron-left'></i>",
+						        "<i class='fa fa-chevron-right'></i>"
+						    ],
+						    rewindNav : true,
+						    scrollPerPage : false,
+
+						    responsive: true,
+						    responsiveRefreshRate : 200,
+
+						    //Auto height
+						    autoHeight : false,
+
+						    //Mouse Events
+						    dragBeforeAnimFinish : true,
+						    mouseDrag : true,
+						    touchDrag : true,
+						})
+					</script>
 		    	<?php endif; ?>
+
+
 
 		    	<?php if ($left): ?>
 					      <div class="sidebar-left col-lg-3 col-md-3 col-sm-3 col-xs-12"><jdoc:include type="modules" name="SidebarLeft" style="xhtml" /></div>
@@ -211,10 +296,10 @@ h6 {font-family:"<?php echo $this->params->get('h6_font', 'PT Sans Narrow')?>";}
 						<jdoc:include type="modules" name="location_map" style="xhtml" />
 						<div><jdoc:include type="message" /></div>
 						<div><jdoc:include type="component" /></div>
-
 					</div>
 				<?php endif;?>
-				<?php if ($right): ?>
+
+				<?php if ($right): ?>					
 					<div class="sidebar-right col-lg-3 col-md-3 col-sm-3 col-xs-12">
 						<jdoc:include type="modules" name="SidebarRight" style="xhtml" />
 					</div>
@@ -371,31 +456,7 @@ h6 {font-family:"<?php echo $this->params->get('h6_font', 'PT Sans Narrow')?>";}
 		</div> <!--id footer-->
 		<script type="text/javascript">
 			jQuery(".fancybox").fancybox();
-			jQuery(document).ready(function(){
-				jQuery(".cate-main").click(function() { 
-				  jQuery(".list-cate").slideToggle();
-				});
-			});
 		</script>
 
-		<?php $alias = &JFactory::getURI()->getPath();?>
-		<?php if (strpos($alias, 'san-pham') !== false) { ?>
-
-			<div class="box-auto" style="text-transform: uppercase;">
-				<button class="cate-main">Danh mục sản phẩm</button>
-				<ul class="list-cate">
-					<li><a href="#cate-1">ỐNG VÀ PHỤ KIỆN CỐT SỢI THỦY TINH</a></li>
-					<li><a href="#cate-2">BỒN BỂ CỐT SỢI THỦY TINH</a></li>
-					<li><a href="#cate-3">Bàn Ghế, Đồ Trang Trí</a></li>
-					<li><a href="#cate-4">Nhà Vệ Sinh Công Cộng</a></li>
-					<li><a href="#cate-5">Sản Phẩm Tôn Lấy Sáng</a></li>
-					<li><a href="#cate-6">Sản Phẩm Tủ Điện, Hộp Đồng Hồ Nước</a></li>
-					<li><a href="#cate-7">Linh Kiện, Phụ Kiện Cho Các Sản Phẩm Công  Nghiệp Và Dân Dụng</a></li>
-					<li><a href="#cate-8">Sản Phẩm Nắp Hố Ga, Song Chắn Rác, Thùng Rác Công Cộng</a></li>
-					<li><a href="#cate-9">Hệ Thống Lọc Khí, Hút Mùi Nhà Xưởng</a></li>
-				</ul>
-			</div>
-		<?php } ?>
-		
 	</body>
 </html>
