@@ -1732,10 +1732,11 @@ div.col_rent {
 }
 .lager-row .service_box img {
     height: auto !important;
+    min-height: 345px;
 }
 .service_textblock .service_box img {
   width:100%;
-  height:220px;
+  height:180px;
 }
 .manager_content {
   margin-bottom:30px;
