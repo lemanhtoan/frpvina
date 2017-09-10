@@ -186,7 +186,7 @@ h6 {font-family:"<?php echo $this->params->get('h6_font', 'PT Sans Narrow')?>";}
 						<nav id="site-navigation-main" class="navbar" role="navigation">
 							<div class="navbar-header">
 					      		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar-collapse">
-					        		<i class="fa fa-bars"></i>
+					        		Danh mục
 					      		</button>
 					    	</div>
 							<div id="main-navbar-collapse" class="collapse navbar-collapse">
