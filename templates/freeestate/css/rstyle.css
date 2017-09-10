@@ -1752,6 +1752,55 @@ div.col_rent {
   transition:all 0.3s;
 }
 @media (max-width: 767px) {
+  button.navbar-toggle {
+    width: 100%;
+    background: #3C02AF;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-right: 0;
+    cursor: pointer;
+}
+#site-navigation-main .item-101 {
+    display: none;
+}
+.sidebar-left-content {
+    padding:  10px 25px;
+}
+.moduletablemore-detail {
+    padding: 0;
+    width: 100%;
+    margin: 10px 0;
+}
+#owl-products .owl-prev {
+    left: 10px;
+}
+#owl-products .item {
+    text-align: center;
+}
+.navbar .nav > .active > a {
+  color:  #fff;
+  background-color: #3C02AF !important;
+  background: #3C02AF !important;
+}
+#logo {
+  padding: 0;
+}
+#contentBox h4 {
+  font-size: 18px;
+}
+.service_textblock .service_box img {
+  height: 130px !important;
+}
+.lager-row .service_box img {
+      min-height: 200px !important;
+}
+.service_box h2 {
+  min-height: 73px !important;
+}
+#contentBox h5 {
+  font-size: 16px;
+}
   .manager_content .block_manag img {
     display:block;
     margin:auto;
